@@ -1,4 +1,126 @@
-﻿  main.c
-  DoublyLinkedList.c
-c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(1): fatal error C1016: #if[n]def expected an identifier
-  Generating Code...
+﻿  DoublyLinkedList.c
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(10): error C2061: syntax error: identifier 'Record'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(11): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(12): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(13): error C2059: syntax error: '}'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(40): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(43): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(43): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(43): error C2371: 'Record': redefinition; different basic types
+  c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(30): note: see declaration of 'Record'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(43): error C2146: syntax error: missing ';' before identifier 'newData'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(43): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(46): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(46): error C2081: 'Node': name in formal parameter list illegal
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(46): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(46): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(49): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(49): error C2081: 'Node': name in formal parameter list illegal
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(49): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(49): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(49): error C2040: 'pList': 'int *' differs in levels of indirection from 'int **'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(52): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(52): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(52): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(52): error C2040: 'pList': 'int *' differs in levels of indirection from 'int **'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(55): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(55): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(55): error C2040: 'pList': 'int *' differs in levels of indirection from 'int **'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(55): error C2371: 'Record': redefinition; different basic types
+  c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(30): note: see declaration of 'Record'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(55): error C2146: syntax error: missing ';' before identifier 'searchContact'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(55): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(58): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(58): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(58): error C2040: 'pList': 'int *' differs in levels of indirection from 'int **'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(58): error C2371: 'Record': redefinition; different basic types
+  c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(30): note: see declaration of 'Record'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(58): error C2146: syntax error: missing ';' before identifier 'searchContact'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(58): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(61): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(61): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(61): error C2040: 'pList': 'int *' differs in levels of indirection from 'int **'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(61): error C2371: 'Record': redefinition; different basic types
+  c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(30): note: see declaration of 'Record'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(61): error C2146: syntax error: missing ';' before identifier 'searchContact'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(61): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(64): warning C4273: 'exit': inconsistent dll linkage
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdlib.h(50): note: see previous definition of 'exit'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(9): warning C4047: '=': 'int' differs in levels of indirection from 'char *'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(12): warning C4047: '=': 'int' differs in levels of indirection from 'char *'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(8): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(453): note: see declaration of 'strtok'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(11): warning C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(453): note: see declaration of 'strtok'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(18): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(20): error C2065: 'Node': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(20): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(20): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(22): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(22): error C2223: left of '->data' must point to struct/union
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(22): error C2198: 'strcpy': too few arguments for call
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(23): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(23): error C2223: left of '->data' must point to struct/union
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(23): error C2198: 'strcpy': too few arguments for call
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(24): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(24): error C2223: left of '->data' must point to struct/union
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(24): error C2198: 'strcpy': too few arguments for call
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(25): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(25): error C2223: left of '->data' must point to struct/union
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(25): error C2198: 'strcpy': too few arguments for call
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(27): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(27): error C2223: left of '->data' must point to struct/union
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(28): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(28): error C2223: left of '->data' must point to struct/union
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(29): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(29): error C2223: left of '->data' must point to struct/union
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(30): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(30): error C2223: left of '->data' must point to struct/union
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(32): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(32): error C2223: left of '->pNext' must point to struct/union
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(33): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(33): error C2223: left of '->pPrev' must point to struct/union
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(35): error C2065: 'pMem': undeclared identifier
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(35): warning C4047: 'return': 'int *' differs in levels of indirection from 'int'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(22): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(23): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(24): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(25): warning C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\string.h(119): note: see declaration of 'strcpy'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(38): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(38): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(38): error C2371: 'Record': redefinition; different basic types
+  c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(30): note: see declaration of 'Record'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(38): error C2146: syntax error: missing ';' before identifier 'newData'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(38): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(39): error C2054: expected '(' to follow 'newData'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(62): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(62): error C2081: 'Node': name in formal parameter list illegal
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(62): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(62): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(63): error C2054: expected '(' to follow 'pList'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(99): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(99): error C2081: 'Node': name in formal parameter list illegal
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(99): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(99): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(100): error C2040: 'pList': 'int *' differs in levels of indirection from 'int **'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(100): error C2054: expected '(' to follow 'pList'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(118): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(118): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(118): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(119): error C2040: 'pList': 'int *' differs in levels of indirection from 'int **'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(119): error C2054: expected '(' to follow 'pList'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(133): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(133): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(133): error C2040: 'pList': 'int *' differs in levels of indirection from 'int **'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(133): error C2371: 'Record': redefinition; different basic types
+  c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.h(30): note: see declaration of 'Record'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(133): error C2146: syntax error: missing ';' before identifier 'searchContact'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(133): error C2059: syntax error: ')'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(134): error C2054: expected '(' to follow 'searchContact'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(167): error C2143: syntax error: missing ')' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(167): error C2143: syntax error: missing '{' before '*'
+c:\users\william\documents\github\cpts_122\pa2\pa2\doublylinkedlist.c(167): fatal error C1003: error count exceeds 100; stopping compilation

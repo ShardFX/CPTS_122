@@ -5,13 +5,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct node
-{
-	Record data;
-	Node *pPrev;
-	Node *pNext;
-}Node;
-
 typedef struct duration
 {
 	int minutes;
@@ -29,29 +22,43 @@ typedef struct record
 	int rating;
 }Record;
 
+typedef struct node
+{
+	Record data;
+	Node *pPrev;
+	Node *pNext;
+}Node;
+
+typedef enum boolean
+{
+	FALSE, TRUE
+}Boolean;
+
+Duration splitDurationString(char durationString[5]);
+
 //Allocates memory for new Node
-int makeNode(Node **pList, Record newData);
+Node * makeNode(Record newData);
 
 //Inserts new Node at front of list
-int insertFront(Node **pList, Record newData);
+Boolean insertFront(Node **pList, Record newData);
 
 //fills list from CSV
-int loadRecord(FILE *infile);
+Boolean loadRecord(FILE *infile, Node **pList);
 
 //Stores list to CSV
-int storeRecord();
+Boolean storeRecord(FILE *infile, Node *pList);
 
 //Displays all record nodes
-int displayRecord();
+Boolean displayRecord(Node *pList);
 
 //edits single node
-int editRecord();
+Boolean editRecord(Node *pList, Record searchContact);
 
 //overwrites existing rating
-int rateSong();
+Boolean rateSong(Node *pList, Record searchContact);
 
 //plays from search node location to end of list
-int playSong();
+Boolean playSong(Node *pList, Record searchContact);
 
 //saves to CSV and stops program
 void exit();
