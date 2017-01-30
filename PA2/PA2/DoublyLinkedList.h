@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 typedef struct duration
 {
@@ -25,8 +26,8 @@ typedef struct record
 typedef struct node
 {
 	Record data;
-	Node *pPrev;
-	Node *pNext;
+	struct node *pPrev;
+	struct node *pNext;
 }Node;
 
 typedef enum boolean
@@ -60,7 +61,6 @@ Boolean rateSong(Node *pList, Record searchContact);
 //plays from search node location to end of list
 Boolean playSong(Node *pList, Record searchContact);
 
-//saves to CSV and stops program
-void exit();
+void sleep(int seconds);
 
 #endif

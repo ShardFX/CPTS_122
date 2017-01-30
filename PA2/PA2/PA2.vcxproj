@@ -144,9 +144,11 @@
   <ItemGroup>
     <ClCompile Include="DoublyLinkedList.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="ui.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DoublyLinkedList.h" />
+    <ClInclude Include="ui.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="musicPlayList.csv" />

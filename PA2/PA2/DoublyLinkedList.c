@@ -6,10 +6,10 @@ Duration splitDurationString(char durationString[5])
 	Duration tDuration;
 	char * token;
 	token = strtok(durationString, ":");
-	tDuration.minutes = token;
+	tDuration.minutes = atoi(token);
 
 	token = strtok(NULL, ":");
-	tDuration.seconds = token;
+	tDuration.seconds = atoi(token);
 	return tDuration;
 
 
@@ -49,9 +49,10 @@ Boolean insertFront(Node **pList, Record newData)
 	}
 	else
 	{
+
 		pMem->pNext = *pList;
+		pCur->pPrev = pMem;
 		pMem->pPrev = NULL;
-		pCur->pNext->pPrev = pMem;
 		*pList = pMem;
 		success = TRUE;
 	}
@@ -61,7 +62,7 @@ Boolean insertFront(Node **pList, Record newData)
 
 Boolean loadRecord(FILE *infile, Node **pList)
 {
-	char fileByLine[1000], *token;
+	char fileByLine[1000], *token, *tempDuration;
 	Record pTemp;
 
 	Boolean success = FALSE;
@@ -72,9 +73,21 @@ Boolean loadRecord(FILE *infile, Node **pList)
 	{
 		token = strtok(fileByLine, ",");
 		strcpy(pTemp.artist, token);
+		if (pTemp.artist[0] == 34)
+		{
+			token = strtok(NULL, ",");
+			strcat(pTemp.artist, token);
 
-		token = strtok(NULL, ",");
-		strcpy(pTemp.albumTitle, token);
+
+			token = strtok(NULL, ",");
+			strcpy(pTemp.albumTitle, token);
+		}
+		else
+		{
+
+			token = strtok(NULL, ",");
+			strcpy(pTemp.albumTitle, token);
+		}
 
 		token = strtok(NULL, ",");
 		strcpy(pTemp.songTitle, token);
@@ -83,13 +96,15 @@ Boolean loadRecord(FILE *infile, Node **pList)
 		strcpy(pTemp.genre, token);
 
 		token = strtok(NULL, ",");
-		pTemp.songLength = splitDurationString(token);
+		tempDuration = token;
 
 		token = strtok(NULL, ",");
 		pTemp.timesPlayed = atoi(token);
 
 		token = strtok(NULL, ",");
 		pTemp.rating = atoi(token);
+
+		pTemp.songLength = splitDurationString(tempDuration);
 
 		success = insertFront(pList, pTemp);
 	}
@@ -219,7 +234,8 @@ Boolean playSong(Node *pList, Record searchContact)
 	}
 }
 
-void exit()
+void sleep(int seconds)
 {
-
+	int startTime = time(0);
+	while (time(0) < startTime + seconds);
 }
