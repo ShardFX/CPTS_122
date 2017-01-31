@@ -60,6 +60,9 @@ void mainMenu()
 
 			c = MAINMENU;
 			break;
+		case EXIT:
+			saveAndExit();
+			exit(0);
 		default:
 			mainMenu();
 			break;
@@ -67,25 +70,59 @@ void mainMenu()
 	}
 }
 
+
+//complete
 void load()
 {
+	system("cls");
+	printf("Loading from musicPlayList.csv\n");
 
 	FILE *infile = fopen("musicPlayList.csv", "r+");
 
 	loadRecord(infile, &pList);
-	printf("loaded records from CSV");
+	fclose(infile);
+	printf("loaded records from CSV\n");
 	sleep(3);
-
 }
 
 void store()
 {
+	system("cls");
+	printf("Saving to musicPlayList.csv\n");
+	FILE *infile = fopen("musicPlayList.csv", "r+");
 
+	storeRecord(infile, pList);
+	fclose(infile);
+	printf("Store success");
+	sleep(3);
 }
 
+
+//complete
 void display()
 {
-	displayRecord(pList);
+	system("cls");
+	int c = 1;
+	char artist[50];
+
+	printf("(1)	Print all songs\n(2) Print songs by artist\n");
+	scanf("%d", &c);
+	switch (c)
+	{
+	case 1:
+		displayRecord(pList);
+		break;
+	case 2:
+		printf("Enter artist: ");
+		scanf("%s", artist);
+
+		displayRecordByArtist(pList, artist);
+		break;
+	default:
+		display();
+		break;
+	}
+
 	sleep(3);
 }
 
@@ -101,6 +138,78 @@ void del()
 
 void edit()
 {
+	int c = 0;
+	Record tempRecord;
+	char tempString[100];
+	int tempInt = 0;
+
+	system("cls");
+
+	printf("(1)	input Record\n(2)	search records based on artist\n");
+	scanf("%d", &c);
+
+
+
+	switch (c)
+	{
+	case 1:
+
+		printf("Enter album title: ");
+		scanf("%s", tempString);
+
+		strcpy(tempRecord.albumTitle, tempString);
+
+		printf("Enter artist: ");
+		scanf("%s", tempString);
+
+		strcpy(tempRecord.artist, tempString);
+
+		printf("Enter genre: ");
+		scanf("%s", tempString);
+
+		strcpy(tempRecord.genre, tempString);
+
+		printf("Enter song title: ");
+		scanf("%s", tempString);
+
+		strcpy(tempRecord.songTitle, tempString);
+
+		printf("Enter rating: ");
+		scanf("%d", &tempInt);
+
+		tempRecord.rating = tempInt;
+
+		printf("Enter times played: ");
+		scanf("%d", &tempInt);
+
+		tempRecord.timesPlayed = tempInt;
+
+		printf("Enter duration minutes: ");
+		scanf("%d", &tempInt);
+
+		tempRecord.songLength.minutes = tempInt;
+
+		printf("Enter duration seconds: ");
+		scanf("%d", &tempInt);
+
+		tempRecord.songLength.seconds = tempInt;
+		
+		editRecord(&pList, tempRecord, TRUE);
+		
+		break;
+	case 2:
+		printf("Enter artist name: \n");
+		scanf("%s", tempString);
+
+		displayRecordByArtist(pList, tempString, TRUE);
+
+		break;
+	default:
+		
+		break;
+	}
+
+
 
 }
 
@@ -116,11 +225,14 @@ void rate()
 
 void play()
 {
-	record()
-	playSong(pList,)
 }
 
 void shuffle()
+{
+
+}
+
+void saveAndExit()
 {
 
 }

@@ -32,6 +32,6 @@ void play();
 
 void shuffle();
 
-
+void saveAndExit();
 
 #endif

@@ -37,8 +37,8 @@ Node * makeNode(Record newData)
 
 Boolean insertFront(Node **pList, Record newData)
 {
-	Node * pMem = makeNode(newData), * pCur = NULL;
-	
+	Node * pMem = makeNode(newData), *pCur = NULL;
+
 	Boolean success = FALSE;
 
 	pCur = *pList;
@@ -137,7 +137,7 @@ Boolean displayRecord(Node *pList)
 
 	while (pCur != NULL)
 	{
-		printf("%s, %s, %s, %s, %i:%i, %i, %i\n", 
+		printf("%s, %s, %s, %s, %i:%i, %i, %i\n",
 			pCur->data.artist, pCur->data.albumTitle, pCur->data.songTitle, pCur->data.genre,
 			pCur->data.songLength.minutes, pCur->data.songLength.seconds, pCur->data.timesPlayed,
 			pCur->data.rating);
@@ -145,36 +145,78 @@ Boolean displayRecord(Node *pList)
 	}
 }
 
-Boolean editRecord(Node *pList, Record searchContact)
+
+Boolean displayRecordByArtist(Node *pList, char artist[50], Boolean numerical)
+{
+	Boolean success = FALSE;
+	Node *pCur = NULL;
+	int position = 0;
+
+	pCur = pList;
+
+	while (pCur != NULL)
+	{
+		if (strcmp(pCur->data.artist, artist) == 0)
+		{
+			if (numerical)
+			{
+				printf("(%d)	%s, %s, %s, %s, %i:%i, %i, %i\n", position,
+					pCur->data.artist, pCur->data.albumTitle, pCur->data.songTitle, pCur->data.genre,
+					pCur->data.songLength.minutes, pCur->data.songLength.seconds, pCur->data.timesPlayed,
+					pCur->data.rating);
+				position++;s
+			}
+			else
+			{
+				printf("%s, %s, %s, %s, %i:%i, %i, %i\n",
+					pCur->data.artist, pCur->data.albumTitle, pCur->data.songTitle, pCur->data.genre,
+					pCur->data.songLength.minutes, pCur->data.songLength.seconds, pCur->data.timesPlayed,
+					pCur->data.rating);
+			}
+			
+			
+			success = TRUE;
+
+		}
+		pCur = pCur->pNext;
+	}
+	if (!success)
+		printf("No artist matches found\n");
+}
+
+Boolean editRecord(Node **pList, Record searchContact, Boolean append)
 {
 	Node *pCur = NULL, *pPrev = NULL;
 	Boolean success = FALSE;
 	char charInput[50];
 	int intInput;
 
-	pCur = pList;
-	if (pCur != NULL)
+	pCur = *pList;
+	while (pCur != NULL)
 	{
-		while (pCur != NULL)
+		if (strcmp(pCur->data.songTitle, searchContact.songTitle) == 0 &&
+			strcmp(pCur->data.artist, searchContact.artist) == 0 &&
+			strcmp(pCur->data.albumTitle, searchContact.albumTitle) == 0
+			)
 		{
-			if (strcmp(pCur->data.songTitle, searchContact.songTitle) == 0 &&
-				strcmp(pCur->data.artist, searchContact.artist) == 0 &&
-				strcmp(pCur->data.albumTitle, searchContact.albumTitle) == 0
-				)
-			{
-				printf("Enter new Genre for %s\n", searchContact.songTitle);
-				scanf("%s", charInput);
-				strcpy(pCur->data.genre, charInput);
+			printf("Enter new Genre for %s\n", searchContact.songTitle);
+			scanf("%s", charInput);
+			strcpy(pCur->data.genre, charInput);
 
-				printf("Enter new rating for %s\n", searchContact.songTitle);
-				scanf("%i", intInput);
-				pCur->data.rating = intInput;
+			printf("Enter new rating for %s\n", searchContact.songTitle);
+			scanf("%i", intInput);
+			pCur->data.rating = intInput;
 
-				success = TRUE;
-			}
-			pPrev = pCur;
-			pCur = pCur->pNext;
+			success = TRUE;
 		}
+		pPrev = pCur;
+		pCur = pCur->pNext;
+	}
+	// append as new node if doesnt match any in list
+	if (append && !success) 
+	{
+		insertFront(pList, searchContact);
+		success = TRUE;
 	}
 	return success;
 }

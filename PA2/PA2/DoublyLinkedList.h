@@ -52,8 +52,11 @@ Boolean storeRecord(FILE *infile, Node *pList);
 //Displays all record nodes
 Boolean displayRecord(Node *pList);
 
+//Displays by artist
+Boolean displayRecordByArtist(Node *pList, char artist[50], Boolean numerical);
+
 //edits single node
-Boolean editRecord(Node *pList, Record searchContact);
+Boolean editRecord(Node **pList, Record searchContact, Boolean append);
 
 //overwrites existing rating
 Boolean rateSong(Node *pList, Record searchContact);
