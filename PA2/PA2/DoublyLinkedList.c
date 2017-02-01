@@ -62,7 +62,7 @@ Boolean insertFront(Node **pList, Record newData)
 
 Boolean loadRecord(FILE *infile, Node **pList)
 {
-	char fileByLine[1000], *token, *tempDuration;
+	char fileByLine[1000], *token, *tempDuration, first[25], last[25];
 	Record pTemp;
 
 	Boolean success = FALSE;
@@ -71,12 +71,19 @@ Boolean loadRecord(FILE *infile, Node **pList)
 
 	while (fgets(fileByLine, 1000, infile) != NULL)
 	{
+		
 		token = strtok(fileByLine, ",");
-		strcpy(pTemp.artist, token);
-		if (pTemp.artist[0] == 34)
-		{
+		
+		if (token[0] == 34) {
+			//removes leading '\"'
+			strcpy(last, token + 1);
+
 			token = strtok(NULL, ",");
-			strcat(pTemp.artist, token);
+			// removes trailing '\"'
+			strcpy(first, token);
+			first[strlen(first) - 1] = ' ';
+			strcat(first, last);
+			strcpy(pTemp.artist, first + 1);
 
 
 			token = strtok(NULL, ",");
@@ -84,6 +91,7 @@ Boolean loadRecord(FILE *infile, Node **pList)
 		}
 		else
 		{
+			strcpy(pTemp.artist, token);
 
 			token = strtok(NULL, ",");
 			strcpy(pTemp.albumTitle, token);
@@ -119,12 +127,17 @@ Boolean storeRecord(FILE *infile, Node *pList)
 	if (infile == NULL)
 		success = FALSE;
 
+	pCur = pList;
 	while (pCur != NULL)
 	{
-		fprintf(infile, "%s,%s,%s,%s,%i:%i,%i,%i\n",
+		fprintf(infile, "%s,%s,%s,%s,%i:%i,%i,%i",
 			pCur->data.artist, pCur->data.albumTitle, pCur->data.songTitle, pCur->data.genre,
 			pCur->data.songLength.minutes, pCur->data.songLength.seconds, pCur->data.timesPlayed,
 			pCur->data.rating);
+		if (pCur->pNext != NULL)
+		{
+			fprintf(infile, "\n");
+		}
 		pCur = pCur->pNext;
 	}
 	return success;
@@ -145,7 +158,6 @@ Boolean displayRecord(Node *pList)
 	}
 }
 
-
 Boolean displayRecordByArtist(Node *pList, char artist[50], Boolean numerical)
 {
 	Boolean success = FALSE;
@@ -153,6 +165,9 @@ Boolean displayRecordByArtist(Node *pList, char artist[50], Boolean numerical)
 	int position = 0;
 
 	pCur = pList;
+
+	//cull newline character from string.
+
 
 	while (pCur != NULL)
 	{
@@ -188,25 +203,69 @@ Boolean editRecord(Node **pList, Record searchContact, Boolean append)
 {
 	Node *pCur = NULL, *pPrev = NULL;
 	Boolean success = FALSE;
-	char charInput[50];
-	int intInput;
+	char input[50];
 
 	pCur = *pList;
 	while (pCur != NULL)
 	{
+		//compares title, artist, songtitle to ensure correct record
 		if (strcmp(pCur->data.songTitle, searchContact.songTitle) == 0 &&
 			strcmp(pCur->data.artist, searchContact.artist) == 0 &&
 			strcmp(pCur->data.albumTitle, searchContact.albumTitle) == 0
 			)
 		{
-			printf("Enter new Genre for %s\n", searchContact.songTitle);
-			scanf("%s", charInput);
-			strcpy(pCur->data.genre, charInput);
+			if (searchContact.genre[0] == '\0')
+			{
+				printf("Enter new Genre for %s\n", searchContact.songTitle);
+				fgets(input, 50, stdin);
+				input[strlen(input) - 1] = 0;
+				strcpy(pCur->data.genre, input);
+			}
+			else
+			{
+				strcpy(pCur->data.genre, searchContact.genre);
+			}
 
-			printf("Enter new rating for %s\n", searchContact.songTitle);
-			scanf("%i", intInput);
-			pCur->data.rating = intInput;
-
+			if (searchContact.rating == -1)
+			{
+				printf("Enter new rating for %s\n", searchContact.songTitle);
+				fgets(input, 50, stdin);
+				pCur->data.rating = atoi(input);
+			}
+			else
+			{
+				pCur->data.rating = searchContact.rating;
+			}
+			if (searchContact.timesPlayed == -1)
+			{
+				printf("Enter times played: ");
+				fgets(input, 100, stdin);
+				pCur->data.timesPlayed = atoi(input);
+			}
+			else
+			{
+				pCur->data.timesPlayed = searchContact.timesPlayed;
+			}
+			if (searchContact.songLength.minutes == -1)
+			{
+				printf("Enter duration minutes: ");
+				fgets(input, 100, stdin);
+				pCur->data.songLength.minutes = atoi(input);
+			}
+			else
+			{
+				pCur->data.songLength.minutes = searchContact.songLength.minutes;
+			}
+			if (searchContact.songLength.seconds == -1)
+			{
+				printf("Enter duration seconds: ");
+				fgets(input, 100, stdin);
+				pCur->data.songLength.seconds = atoi(input);
+			}
+			else
+			{
+				pCur->data.songLength.seconds = searchContact.songLength.seconds;
+			}
 			success = TRUE;
 		}
 		pPrev = pCur;
@@ -225,23 +284,22 @@ Boolean rateSong(Node *pList, Record searchContact)
 {
 	Node *pCur = NULL, *pPrev = NULL;
 	Boolean success = FALSE;
-	int tempInput;
+	char input[10];
 
 	pCur = pList;
-	if (pCur != NULL)
+	while (pCur != NULL)
 	{
-		while (pCur != NULL)
+		if (strcmp(pCur->data.songTitle, searchContact.songTitle) == 0 &&
+			strcmp(pCur->data.artist, searchContact.artist) == 0 &&
+			strcmp(pCur->data.albumTitle, searchContact.albumTitle) == 0
+			)
 		{
-			if (strcmp(pCur->data.songTitle, searchContact.songTitle) == 0 &&
-				strcmp(pCur->data.artist, searchContact.artist) == 0 &&
-				strcmp(pCur->data.albumTitle, searchContact.albumTitle) == 0
-				)
-			{
-				printf("Enter new rating for %s\n", searchContact.songTitle);
-				scanf("%i", tempInput);
-				pCur->data.rating = tempInput;
-			}
+			printf("Enter new rating for %s:\n", searchContact.songTitle);
+			fgets(input, 50, stdin);
+			pCur->data.rating = atoi(input);
 		}
+
+		pCur = pCur->pNext;
 	}
 	return success;
 }

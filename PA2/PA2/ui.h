@@ -34,4 +34,7 @@ void shuffle();
 
 void saveAndExit();
 
+//clears stdin buffer
+void clean();
+
 #endif

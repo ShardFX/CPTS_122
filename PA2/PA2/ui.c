@@ -13,7 +13,7 @@ void mainMenu()
 	printf("Main Menu\n(1)   load\n(2)   store\n(3)   display\n(4)   insert\n(5)   delete\n(6)   edit\n(7)   sort\n(8)   rate\n(9)   play\n(10) shuffle\n(11) exit\n");
 	scanf("%d", &c);
 
-	while (c != EXIT)
+	while (TRUE)
 	{
 		switch (c)
 		{
@@ -41,7 +41,7 @@ void mainMenu()
 			c = MAINMENU;
 			break;
 		case EDIT:
-
+			edit();
 			c = MAINMENU;
 			break;
 		case SORT:
@@ -49,7 +49,7 @@ void mainMenu()
 			c = MAINMENU;
 			break;
 		case RATE:
-
+			rate();
 			c = MAINMENU;
 			break;
 		case PLAY:
@@ -62,9 +62,9 @@ void mainMenu()
 			break;
 		case EXIT:
 			saveAndExit();
-			exit(0);
+			break;
 		default:
-			mainMenu();
+			c = MAINMENU;
 			break;
 		}
 	}
@@ -77,7 +77,7 @@ void load()
 	system("cls");
 	printf("Loading from musicPlayList.csv\n");
 
-	FILE *infile = fopen("musicPlayList.csv", "r+");
+	FILE *infile = fopen("musicPlayList.csv", "r");
 
 	loadRecord(infile, &pList);
 	fclose(infile);
@@ -89,14 +89,13 @@ void store()
 {
 	system("cls");
 	printf("Saving to musicPlayList.csv\n");
-	FILE *infile = fopen("musicPlayList.csv", "r+");
+	FILE *infile = fopen("musicPlayList.csv", "w");
 
 	storeRecord(infile, pList);
 	fclose(infile);
 	printf("Store success");
 	sleep(3);
 }
-
 
 //complete
 void display()
@@ -106,7 +105,9 @@ void display()
 	char artist[50];
 
 	printf("(1)	Print all songs\n(2) Print songs by artist\n");
-	scanf("%d", &c);
+	fgets(artist, 50, stdin);
+	c = atoi(artist);
+
 	switch (c)
 	{
 	case 1:
@@ -114,7 +115,7 @@ void display()
 		break;
 	case 2:
 		printf("Enter artist: ");
-		scanf("%[\n]s", artist);
+		fgets(artist,50,stdin);
 
 		displayRecordByArtist(pList, artist,FALSE);
 		break;
@@ -140,13 +141,14 @@ void edit()
 {
 	int c = 0;
 	Record tempRecord;
-	char tempString[100];
-	int tempInt = 0;
+	char input[100];
 
 	system("cls");
+	clean();
 
-	printf("(1)	input Record\n(2)	search records based on artist\n");
-	scanf("%d", &c);
+	printf("(1)	edit/append Record\n(2)	search records based on artist\n");
+	fgets(input, 100, stdin);
+	c = atoi(input);
 
 
 
@@ -155,53 +157,73 @@ void edit()
 	case 1:
 
 		printf("Enter album title: ");
-		scanf("%[^\n]s", tempString);
-
-		strcpy(tempRecord.albumTitle, tempString);
+		fgets(input, 100, stdin);
+		input[strlen(input) - 1] = 0;
+		strcpy(tempRecord.albumTitle, input);
 
 		printf("Enter artist: ");
-		scanf("%[^\n]s", tempString);
-
-		strcpy(tempRecord.artist, tempString);
+		fgets(input, 100, stdin);
+		input[strlen(input) - 1] = 0;
+		strcpy(tempRecord.artist, input);
 
 		printf("Enter genre: ");
-		scanf("%[^\n]s", tempString);
-
-		strcpy(tempRecord.genre, tempString);
+		fgets(input, 100, stdin);
+		input[strlen(input) - 1] = 0;
+		strcpy(tempRecord.genre, input);
 
 		printf("Enter song title: ");
-		scanf("%[^\n]s", tempString);
-
-		strcpy(tempRecord.songTitle, tempString);
+		fgets(input, 100, stdin);
+		input[strlen(input) - 1] = 0;
+		strcpy(tempRecord.songTitle, input);
 
 		printf("Enter rating: ");
-		scanf("%d", &tempInt);
-
-		tempRecord.rating = tempInt;
+		fgets(input, 100, stdin);
+		tempRecord.rating = atoi(input);
 
 		printf("Enter times played: ");
-		scanf("%d", &tempInt);
-
-		tempRecord.timesPlayed = tempInt;
+		fgets(input, 100, stdin);
+		tempRecord.timesPlayed = atoi(input);
 
 		printf("Enter duration minutes: ");
-		scanf("%d", &tempInt);
-
-		tempRecord.songLength.minutes = tempInt;
+		fgets(input, 100, stdin);
+		tempRecord.songLength.minutes = atoi(input);
 
 		printf("Enter duration seconds: ");
-		scanf("%d", &tempInt);
-
-		tempRecord.songLength.seconds = tempInt;
+		fgets(input, 100, stdin);
+		tempRecord.songLength.seconds = atoi(input);
 		
 		editRecord(&pList, tempRecord, TRUE);
 		
 		break;
 	case 2:
 		printf("Enter artist name: \n");
-		scanf("%[^\n]s", tempString);
+		fgets(input, 100, stdin);
+		input[strlen(input) - 1] = 0;
+		strcpy(tempRecord.artist, input);
 
-		displayRecordByArtist(pList, tempString, TRUE);
+		displayRecordByArtist(pList, input, TRUE);
+
+		printf("Enter song title: ");
+		fgets(input, 100, stdin);
+		input[strlen(input) - 1] = 0;
+
+		strcpy(tempRecord.songTitle, input);
+		
+
+		printf("Enter album title: ");
+		fgets(input, 100, stdin);
+		input[strlen(input) - 1] = 0;
+
+		strcpy(tempRecord.albumTitle, input);
+
+		tempRecord.genre[0] = '\0';
+		tempRecord.rating = -1;
+		tempRecord.songLength.minutes = -1;
+		tempRecord.songLength.seconds = -1;
+		tempRecord.timesPlayed = -1;
+
+		editRecord(&pList, tempRecord, FALSE);
+
 
 		break;
 	default:
@@ -220,30 +242,40 @@ void sort()
 
 void rate()
 {
-	char tempString[50];
 	Record tempRecord;
-	int tempInt;
-	Boolean success = FALSE;
+	char input[100];
 
-	printf("Enter album title: ");
-	scanf("%[^\n]s", tempString);
+	system("cls");
+	clean();
 
-	strcpy(tempRecord.albumTitle, tempString);
 
-	printf("Enter artist: ");
-	scanf("%[^\n]s", tempString);
+	printf("Enter artist name: \n");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+	strcpy(tempRecord.artist, input);
 
-	strcpy(tempRecord.artist, tempString);
+	displayRecordByArtist(pList, input, TRUE);
 
 	printf("Enter song title: ");
-	scanf("%[^\n]s", tempString);
-	strcpy(tempRecord.songTitle, tempString);
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
 
-	printf("Enter new rating: ");
-	scanf("%d", &tempInt);
-	tempRecord.rating = tempInt;
+	strcpy(tempRecord.songTitle, input);
 
-	success = editRecord(&pList, tempRecord, FALSE);
+
+	printf("Enter album title: ");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+
+	strcpy(tempRecord.albumTitle, input);
+
+	tempRecord.genre[0] = '\0';
+	tempRecord.rating = -1;
+	tempRecord.songLength.minutes = -1;
+	tempRecord.songLength.seconds = -1;
+	tempRecord.timesPlayed = -1;
+
+	rateSong(pList, tempRecord);
 
 	sleep(3);
 
@@ -251,24 +283,42 @@ void rate()
 
 void play()
 {
-	char tempString[50];
+	char input[50];
 	Record tempRecord;
 
-	printf("Enter album title: ");
-	scanf("%[^\n]s", tempString);
+	system("cls");
+	clean();
 
-	strcpy(tempRecord.albumTitle, tempString);
+	printf("Enter artist name: \n");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+	strcpy(tempRecord.artist, input);
 
-	printf("Enter artist: ");
-	scanf("%[^\n]s", tempString);
-
-	strcpy(tempRecord.artist, tempString);
+	displayRecordByArtist(pList, input, TRUE);
 
 	printf("Enter song title: ");
-	scanf("%[^\n]s", tempString);
-	strcpy(tempRecord.songTitle, tempString);
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+
+	strcpy(tempRecord.songTitle, input);
+
+
+	printf("Enter album title: ");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+
+	strcpy(tempRecord.albumTitle, input);
+
+	tempRecord.genre[0] = '\0';
+	tempRecord.rating = -1;
+	tempRecord.songLength.minutes = -1;
+	tempRecord.songLength.seconds = -1;
+	tempRecord.timesPlayed = -1;
 	
+	system("cls");
 	playSong(pList, tempRecord);
+
+	printf("Out of music to play!");
 
 	sleep(3);
 }
@@ -280,5 +330,12 @@ void shuffle()
 
 void saveAndExit()
 {
+	store();
+	exit(0);
+}
 
+void clean()
+{
+	int c;
+	while ((c = getchar()) != '\n' && c != EOF);
 }

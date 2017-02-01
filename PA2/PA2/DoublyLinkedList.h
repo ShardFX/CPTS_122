@@ -64,6 +64,7 @@ Boolean rateSong(Node *pList, Record searchContact);
 //plays from search node location to end of list
 Boolean playSong(Node *pList, Record searchContact);
 
+//using time.h to loop for duration in seconds
 void sleep(int seconds);
 
 #endif
