@@ -164,7 +164,7 @@ Boolean displayRecordByArtist(Node *pList, char artist[50], Boolean numerical)
 					pCur->data.artist, pCur->data.albumTitle, pCur->data.songTitle, pCur->data.genre,
 					pCur->data.songLength.minutes, pCur->data.songLength.seconds, pCur->data.timesPlayed,
 					pCur->data.rating);
-				position++;s
+				position++;
 			}
 			else
 			{

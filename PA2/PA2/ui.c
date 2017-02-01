@@ -53,7 +53,7 @@ void mainMenu()
 			c = MAINMENU;
 			break;
 		case PLAY:
-
+			play();
 			c = MAINMENU;
 			break;
 		case SHUFFLE:
@@ -114,9 +114,9 @@ void display()
 		break;
 	case 2:
 		printf("Enter artist: ");
-		scanf("%s", artist);
+		scanf("%[\n]s", artist);
 
-		displayRecordByArtist(pList, artist);
+		displayRecordByArtist(pList, artist,FALSE);
 		break;
 	default:
 		display();
@@ -155,22 +155,22 @@ void edit()
 	case 1:
 
 		printf("Enter album title: ");
-		scanf("%s", tempString);
+		scanf("%[^\n]s", tempString);
 
 		strcpy(tempRecord.albumTitle, tempString);
 
 		printf("Enter artist: ");
-		scanf("%s", tempString);
+		scanf("%[^\n]s", tempString);
 
 		strcpy(tempRecord.artist, tempString);
 
 		printf("Enter genre: ");
-		scanf("%s", tempString);
+		scanf("%[^\n]s", tempString);
 
 		strcpy(tempRecord.genre, tempString);
 
 		printf("Enter song title: ");
-		scanf("%s", tempString);
+		scanf("%[^\n]s", tempString);
 
 		strcpy(tempRecord.songTitle, tempString);
 
@@ -199,7 +199,7 @@ void edit()
 		break;
 	case 2:
 		printf("Enter artist name: \n");
-		scanf("%s", tempString);
+		scanf("%[^\n]s", tempString);
 
 		displayRecordByArtist(pList, tempString, TRUE);
 
@@ -209,7 +209,7 @@ void edit()
 		break;
 	}
 
-
+	sleep(3);
 
 }
 
@@ -220,11 +220,57 @@ void sort()
 
 void rate()
 {
+	char tempString[50];
+	Record tempRecord;
+	int tempInt;
+	Boolean success = FALSE;
+
+	printf("Enter album title: ");
+	scanf("%[^\n]s", tempString);
+
+	strcpy(tempRecord.albumTitle, tempString);
+
+	printf("Enter artist: ");
+	scanf("%[^\n]s", tempString);
+
+	strcpy(tempRecord.artist, tempString);
+
+	printf("Enter song title: ");
+	scanf("%[^\n]s", tempString);
+	strcpy(tempRecord.songTitle, tempString);
+
+	printf("Enter new rating: ");
+	scanf("%d", &tempInt);
+	tempRecord.rating = tempInt;
+
+	success = editRecord(&pList, tempRecord, FALSE);
+
+	sleep(3);
 
 }
 
 void play()
 {
+	char tempString[50];
+	Record tempRecord;
+
+	printf("Enter album title: ");
+	scanf("%[^\n]s", tempString);
+
+	strcpy(tempRecord.albumTitle, tempString);
+
+	printf("Enter artist: ");
+	scanf("%[^\n]s", tempString);
+
+	strcpy(tempRecord.artist, tempString);
+
+	printf("Enter song title: ");
+	scanf("%[^\n]s", tempString);
+	strcpy(tempRecord.songTitle, tempString);
+	
+	playSong(pList, tempRecord);
+
+	sleep(3);
 }
 
 void shuffle()
