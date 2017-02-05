@@ -58,11 +58,17 @@ Boolean displayRecordByArtist(Node *pList, char artist[50], Boolean numerical);
 //edits single node
 Boolean editRecord(Node **pList, Record searchContact, Boolean append);
 
+//deletes node from list
+Boolean deleteRecord(Node **pList, Record searchContact);
+
 //overwrites existing rating
 Boolean rateSong(Node *pList, Record searchContact);
 
 //plays from search node location to end of list
 Boolean playSong(Node *pList, Record searchContact);
+
+//sorts records based on type
+Boolean sortRecords(Node *pList, int sortType);
 
 //using time.h to loop for duration in seconds
 void sleep(int seconds);

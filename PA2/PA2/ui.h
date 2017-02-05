@@ -37,4 +37,5 @@ void saveAndExit();
 //clears stdin buffer
 void clean();
 
+int *randWithoutRep(int count);
 #endif

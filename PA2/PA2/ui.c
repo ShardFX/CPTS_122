@@ -33,11 +33,11 @@ void mainMenu()
 			c = MAINMENU;
 			break;
 		case INSERT:
-
+			insert();
 			c = MAINMENU;
 			break;
 		case DELETE:
-
+			del();
 			c = MAINMENU;
 			break;
 		case EDIT:
@@ -45,7 +45,7 @@ void mainMenu()
 			c = MAINMENU;
 			break;
 		case SORT:
-
+			sort();
 			c = MAINMENU;
 			break;
 		case RATE:
@@ -57,7 +57,8 @@ void mainMenu()
 			c = MAINMENU;
 			break;
 		case SHUFFLE:
-
+			shuffle();
+			
 			c = MAINMENU;
 			break;
 		case EXIT:
@@ -85,6 +86,7 @@ void load()
 	sleep(3);
 }
 
+//complete
 void store()
 {
 	system("cls");
@@ -127,16 +129,89 @@ void display()
 	sleep(3);
 }
 
+//complete
 void insert()
 {
+	Record tempRecord;
+	char input[100];
 
+	system("cls");
+	clean();
+
+	printf("Enter album title: ");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+	strcpy(tempRecord.albumTitle, input);
+
+	printf("Enter artist: ");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+	strcpy(tempRecord.artist, input);
+
+	printf("Enter genre: ");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+	strcpy(tempRecord.genre, input);
+
+	printf("Enter song title: ");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+	strcpy(tempRecord.songTitle, input);
+
+	printf("Enter rating: ");
+	fgets(input, 100, stdin);
+	tempRecord.rating = atoi(input);
+
+	printf("Enter times played: ");
+	fgets(input, 100, stdin);
+	tempRecord.timesPlayed = atoi(input);
+
+	printf("Enter duration minutes: ");
+	fgets(input, 100, stdin);
+	tempRecord.songLength.minutes = atoi(input);
+
+	printf("Enter duration seconds: ");
+	fgets(input, 100, stdin);
+	tempRecord.songLength.seconds = atoi(input);
+
+	editRecord(&pList, tempRecord, TRUE);
+
+	sleep(3);
 }
 
+//complete
 void del()
 {
+	Record tempRecord;
+	char input[100];
 
+	system("cls");
+	clean();
+
+	printf("Enter artist name: \n");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+	strcpy(tempRecord.artist, input);
+
+	displayRecordByArtist(pList, input, TRUE);
+
+	printf("Enter song title: ");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+
+	strcpy(tempRecord.songTitle, input);
+
+
+	printf("Enter album title: ");
+	fgets(input, 100, stdin);
+	input[strlen(input) - 1] = 0;
+
+	strcpy(tempRecord.albumTitle, input);
+
+	deleteRecord(&pList, tempRecord);
 }
 
+//complete
 void edit()
 {
 	int c = 0;
@@ -235,11 +310,24 @@ void edit()
 
 }
 
+//complete
 void sort()
 {
+	system("cls");
+	int c = 1;
+	char artist[50];
+	clean();
 
+	printf("(1)	Sort by artist\n(2) Sort by album\n(3)	Sort by rating\n(4)	Sort by times played\n");
+	fgets(artist, 50, stdin);
+	c = atoi(artist);
+
+	sortRecords(pList, c);
+	
+	sleep(3);
 }
 
+//complete
 void rate()
 {
 	Record tempRecord;
@@ -281,6 +369,7 @@ void rate()
 
 }
 
+//complete
 void play()
 {
 	char input[50];
@@ -323,11 +412,18 @@ void play()
 	sleep(3);
 }
 
+
 void shuffle()
 {
+	int count = countSongs();
+
+	int *order = randWithoutRep(10);
+
+
 
 }
 
+//complete
 void saveAndExit()
 {
 	store();
@@ -338,4 +434,29 @@ void clean()
 {
 	int c;
 	while ((c = getchar()) != '\n' && c != EOF);
+}
+
+int countSongs()
+{
+	Node *pCur
+}
+
+int *randWithoutRep(int count)
+{
+	int *numbers = malloc(sizeof(int) * count);
+	int randIndex = 0, temp = 0;
+	//fill array with 0-count
+	for (int i = 0; i < count; i++) 
+	{
+		numbers[i] = i;
+	}
+
+	for (int i = 0; i < count; i++)
+	{
+		temp = numbers[i];
+		randIndex = rand() % count;
+		numbers[i] = numbers[randIndex];
+		numbers[randIndex] = temp;
+	}
+
 }

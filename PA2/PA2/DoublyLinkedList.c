@@ -280,6 +280,39 @@ Boolean editRecord(Node **pList, Record searchContact, Boolean append)
 	return success;
 }
 
+Boolean deleteRecord(Node **pList, Record searchContact)
+{
+	Node *pCur = NULL, *pPrev = NULL, *pNext = NULL;
+	Boolean success = FALSE;
+	char input[50];
+
+	pCur = *pList;
+	while (pCur != NULL)
+	{
+		//compares title, artist, songtitle to ensure correct record
+		if (strcmp(pCur->data.songTitle, searchContact.songTitle) == 0 &&
+			strcmp(pCur->data.artist, searchContact.artist) == 0 &&
+			strcmp(pCur->data.albumTitle, searchContact.albumTitle) == 0
+			)
+		{
+			if (pNext == NULL)
+			{
+				pPrev->pNext = pNext;
+			}
+			else
+			{
+				pPrev->pNext = pNext;
+				pNext->pPrev = pPrev;
+			}
+			return TRUE;
+		}
+		pPrev = pCur;
+		pCur = pCur->pNext;
+		pNext = pCur->pNext;
+	}
+
+}
+
 Boolean rateSong(Node *pList, Record searchContact)
 {
 	Node *pCur = NULL, *pPrev = NULL;
@@ -332,6 +365,78 @@ Boolean playSong(Node *pList, Record searchContact)
 		}
 		pCur = pCur->pNext;
 	}
+}
+
+Boolean sortRecords(Node *pList, int sortType)
+{
+	Record prevData;
+	Node *pCur = NULL, *pNext = NULL;
+	int count = 1;
+
+	while (TRUE)
+	{
+		if (pNext == NULL)
+		{
+			pCur = pList;
+			pNext = pCur->pNext;
+			if (count == 0)
+			{
+				return TRUE;
+			}
+			count = 0;
+		}
+
+		if (sortType == 1)
+		{
+			if (strcmp(pCur->data.artist, pNext->data.artist) > 0)
+			{
+				//swap data
+				prevData = pCur->data;
+				pCur->data = pNext->data;
+				pNext->data = prevData;
+				count++;
+			}
+		}
+		if (sortType == 2)
+		{
+			if (strcmp(pCur->data.albumTitle, pNext->data.albumTitle) > 0)
+			{
+				//swap data
+				prevData = pCur->data;
+				pCur->data = pNext->data;
+				pNext->data = prevData;
+				count++;
+			}
+		}
+		if (sortType == 3)
+		{
+			if (pCur->data.rating < pNext->data.rating)
+			{
+				//swap data
+				prevData = pCur->data;
+				pCur->data = pNext->data;
+				pNext->data = prevData;
+				count++;
+			}
+		}
+		if (sortType == 4)
+		{
+			if (pCur->data.timesPlayed < pNext->data.timesPlayed)
+			{
+				//swap data
+				prevData = pCur->data;
+				pCur->data = pNext->data;
+				pNext->data = prevData;
+				count++;
+			}
+		}
+		pCur = pNext;
+		pNext = pCur->pNext;
+
+	}
+
+
+
 }
 
 void sleep(int seconds)
