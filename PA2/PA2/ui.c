@@ -415,11 +415,11 @@ void play()
 
 void shuffle()
 {
-	int count = countSongs();
+	int count = countSongs(pList);
 
-	int *order = randWithoutRep(10);
+	int *order = randWithoutRep(count);
 
-
+	playInOrder(pList, order, count);
 
 }
 
@@ -436,9 +436,21 @@ void clean()
 	while ((c = getchar()) != '\n' && c != EOF);
 }
 
-int countSongs()
+int countSongs(Node *pList)
 {
-	Node *pCur
+	Node *pCur = NULL;
+	int count = 0;
+	pCur = pList;
+
+
+	while (pCur != NULL)
+	{
+
+		count++;
+
+		pCur = pCur->pNext;
+	}
+	return count;
 }
 
 int *randWithoutRep(int count)
@@ -458,5 +470,6 @@ int *randWithoutRep(int count)
 		numbers[i] = numbers[randIndex];
 		numbers[randIndex] = temp;
 	}
+	return numbers;
 
 }

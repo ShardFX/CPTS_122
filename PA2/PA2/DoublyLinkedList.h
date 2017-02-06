@@ -67,8 +67,12 @@ Boolean rateSong(Node *pList, Record searchContact);
 //plays from search node location to end of list
 Boolean playSong(Node *pList, Record searchContact);
 
+Boolean playInOrder(Node *pList, int *order, int count);
+
 //sorts records based on type
 Boolean sortRecords(Node *pList, int sortType);
+
+int goToPosition(Node *pList, int dest, int start);
 
 //using time.h to loop for duration in seconds
 void sleep(int seconds);

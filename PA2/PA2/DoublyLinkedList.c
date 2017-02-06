@@ -367,6 +367,20 @@ Boolean playSong(Node *pList, Record searchContact)
 	}
 }
 
+Boolean playInOrder(Node *pList, int *order, int count)
+{
+	int index = 0;
+	Boolean success;
+
+	for (int i = 0; i < count; i++)
+	{
+		index = goToPosition(pList, order[i], index);
+	}
+
+
+
+}
+
 Boolean sortRecords(Node *pList, int sortType)
 {
 	Record prevData;
@@ -436,6 +450,39 @@ Boolean sortRecords(Node *pList, int sortType)
 	}
 
 
+
+}
+
+
+int goToPosition(Node *pList, int dest, int start)
+{
+
+	Node *pCur = NULL;
+
+	pCur = pList;
+
+	for (int i = 0; i < start; i++)
+	{
+		pCur = pCur->pNext;
+	}
+	while (start != dest)
+	{
+		if (start > dest)
+		{
+			pCur = pCur->pPrev;
+			start--;
+		}
+		else
+		{
+			pCur = pCur->pNext;
+			start++;
+		}
+	}
+	printf("%s, %s, %s, %s, %i:%i, %i, %i\n",
+		pCur->data.artist, pCur->data.albumTitle, pCur->data.songTitle, pCur->data.genre,
+		pCur->data.songLength.minutes, pCur->data.songLength.seconds, pCur->data.timesPlayed,
+		pCur->data.rating);
+	sleep(2);
 
 }
 
