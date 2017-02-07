@@ -483,7 +483,7 @@ int goToPosition(Node *pList, int dest, int start)
 		pCur->data.songLength.minutes, pCur->data.songLength.seconds, pCur->data.timesPlayed,
 		pCur->data.rating);
 	sleep(2);
-
+	return start;
 }
 
 void sleep(int seconds)
