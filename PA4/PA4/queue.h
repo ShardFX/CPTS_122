@@ -8,7 +8,10 @@
 
 typedef struct queueNode
 {
-	char *data;
+	int customerNumber;
+	int serviceTime;
+	int totalTime;
+
 	struct queueNode *pNext;
 
 }QueueNode;
@@ -28,9 +31,9 @@ typedef enum boolean
 
 
 Boolean isEmpty(Queue *queue);
-QueueNode *makeNode(char *newData);
-Boolean enqueue(Queue *queue, char *newData);
-char *dequeue(Queue *queue);
+QueueNode *makeNode(int customerNumber, int serviceTime, int totalTime);
+Boolean enqueue(Queue *queue, int customerNumber, int serviceTime, int totalTime);
+void dequeue(Queue *queue);
 Boolean printQueueRecursive(QueueNode *pHead);
 
 #endif

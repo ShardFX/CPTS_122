@@ -1,0 +1,4 @@
+﻿  grocery.c
+c:\users\william\documents\github\cpts_122\pa4\pa4\grocery.c(6): warning C4244: 'function': conversion from 'time_t' to 'unsigned int', possible loss of data
+  PA4.vcxproj -> C:\Users\William\Documents\GitHub\CPTS_122\PA4\Debug\PA4.exe
+  PA4.vcxproj -> C:\Users\William\Documents\GitHub\CPTS_122\PA4\Debug\PA4.pdb (Full PDB)
