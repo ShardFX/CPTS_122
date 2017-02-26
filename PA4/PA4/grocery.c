@@ -4,12 +4,18 @@
 void runGroceryQueue(Queue *express, Queue *normal, int runTime)
 {
 	srand(time(NULL));
-	int currentTime = 1, expressArrivalTime = (rand() % 4 + 1) + currentTime, normalArrivalTime = (rand() % 4 + 3) + currentTime,
-		totalExpressTime = 0, totalNormalTime = 0, eCustomer = 1, nCustomer = 1;
+	int currentTime = 1, 
+		expressArrivalTime = (rand() % 4 + 1) + currentTime, 
+		normalArrivalTime = (rand() % 4 + 3) + currentTime,
+		totalExpressTime = 0, 
+		totalNormalTime = 0, 
+		eCustomer = 1, 
+		nCustomer = 1;
 
 
 	while (currentTime <= runTime)
 	{
+		//gen new express lane customer
 		if (expressArrivalTime == currentTime)
 		{
 			int temp = (rand() % 4 + 1);
@@ -19,7 +25,7 @@ void runGroceryQueue(Queue *express, Queue *normal, int runTime)
 			expressArrivalTime = (rand() % 4 + 1) + currentTime;//gen new customer
 			eCustomer++;
 		}
-
+		//gen new normal lane customer
 		if (normalArrivalTime == currentTime)
 		{
 			int temp = (rand() % 4 + 3);
@@ -29,7 +35,7 @@ void runGroceryQueue(Queue *express, Queue *normal, int runTime)
 			normalArrivalTime = (rand() % 4 + 3) + currentTime;//gen new customer
 			nCustomer++;
 		}
-
+		//express finished customer
 		if (express->pHead != NULL && express->pHead->serviceTime <= currentTime)
 		{
 			dequeue(express);
@@ -39,12 +45,13 @@ void runGroceryQueue(Queue *express, Queue *normal, int runTime)
 			dequeue(normal);
 		}
 
-
+		//normal finished customer
 		if (currentTime == 1440)//reset customer numbers on new day
 		{
 			eCustomer = nCustomer = 1;
 		}
 
+		//if day is over reset customer number
 		if (currentTime % 10 == 0)
 		{
 			printf("Express Queue:\n");
