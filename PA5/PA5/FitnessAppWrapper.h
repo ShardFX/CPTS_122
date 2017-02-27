@@ -34,10 +34,10 @@ public:
 	void editWeeklyPlan(DietPlan (&weeklyPlan)[7]);
 	void editWeeklyPlan(ExercisePlan (&weeklyPlan)[7]);
 
-	void storeDailyPlan(DietPlan weeklyPlan[]);
+	void storeDailyPlan(DietPlan weeklyPlan, ofstream &pFile);
 	void storeWeeklyPlan(DietPlan weeklyPlan[]);
 
-	void storeDailyPlan(ExercisePlan weeklyPlan[]);
+	void storeDailyPlan(ExercisePlan weeklyPlan, ofstream &pFile);
 	void storeWeeklyPlan(ExercisePlan weeklyPlan[]);
 
 	void displayMenu(DietPlan dietPlan[], ExercisePlan exercisePlan[]);

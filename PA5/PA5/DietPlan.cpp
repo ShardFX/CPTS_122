@@ -50,3 +50,18 @@ string DietPlan::returnFormattedData()
 {
 	return "Calorie goal: " + to_string(calGoal) + " Plan name: " + name + " date: " + date.returnFormattedData();
 }
+
+int DietPlan::getCalGoal()
+{
+	return calGoal;
+}
+
+string DietPlan::getName()
+{
+	return name;
+}
+
+string DietPlan::getDate()
+{
+	return date.returnFormattedData();
+}

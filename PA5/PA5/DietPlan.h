@@ -22,6 +22,10 @@ public:
 
 	void setCalGoal(int newCals);
 
+	int getCalGoal();
+	string getName();
+	string getDate();
+
 	void print();
 	string returnFormattedData();
 

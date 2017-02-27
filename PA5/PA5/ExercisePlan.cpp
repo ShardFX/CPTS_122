@@ -49,3 +49,18 @@ string ExercisePlan::returnFormattedData()
 {
 	return "Steps goal: " + to_string(stepGoal) + " Plan name: " + name + " date: " + date.returnFormattedData();
 }
+
+int ExercisePlan::getStepGoal()
+{
+	return stepGoal;
+}
+
+string ExercisePlan::getName()
+{
+	return name;
+}
+
+string ExercisePlan::getDate()
+{
+	return date.returnFormattedData();
+}

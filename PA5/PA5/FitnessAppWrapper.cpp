@@ -2,7 +2,6 @@
 
 FitnessAppWrapper::FitnessAppWrapper()
 {
-	cout << "test" << endl;
 }
 
 void FitnessAppWrapper::runApp()
@@ -52,7 +51,7 @@ ExercisePlan FitnessAppWrapper::loadDailyPlan(ExercisePlan weeklyPlan, ifstream 
 
 void FitnessAppWrapper::loadWeeklyPlan(ExercisePlan weeklyPlan[])
 {
-	ifstream pFile(DF_NAME);
+	ifstream pFile(EF_NAME);
 	for (int i = 0; i < 7; i++)
 	{
 		weeklyPlan[i] = loadDailyPlan(weeklyPlan[i], pFile);
@@ -61,27 +60,43 @@ void FitnessAppWrapper::loadWeeklyPlan(ExercisePlan weeklyPlan[])
 	this_thread::sleep_for(chrono::seconds(1));
 }
 
-void FitnessAppWrapper::storeDailyPlan(DietPlan weeklyPlan[])
+void FitnessAppWrapper::storeDailyPlan(DietPlan weeklyPlan,ofstream &pFile)
 {
-	cout << "test" << endl;
+	pFile << weeklyPlan.getName() << endl << weeklyPlan.getCalGoal() << endl << weeklyPlan.getDate() << endl << endl;
 	this_thread::sleep_for(chrono::seconds(1));
 }
 
 void FitnessAppWrapper::storeWeeklyPlan(DietPlan weeklyPlan[])
 {
-	cout << "test" << endl;
+	ofstream fs;
+	fs.open(DF_NAME, ofstream::out | ofstream::trunc);
+	
+	for (int i = 0; i < 7; i++)
+	{
+		storeDailyPlan(weeklyPlan[i],fs);
+	}
+	fs.close();
 	this_thread::sleep_for(chrono::seconds(1));
 }
 
-void FitnessAppWrapper::storeDailyPlan(ExercisePlan weeklyPlan[])
+void FitnessAppWrapper::storeDailyPlan(ExercisePlan weeklyPlan, ofstream &pFile)
 {
-	cout << "test" << endl;
+	pFile << weeklyPlan.getName() << endl << weeklyPlan.getStepGoal() << endl << weeklyPlan.getDate() << endl << endl;
+
 	this_thread::sleep_for(chrono::seconds(1));
 }
 
 void FitnessAppWrapper::storeWeeklyPlan(ExercisePlan weeklyPlan[])
 {
-	cout << "test" << endl;
+	ofstream fs;
+	fs.open(DF_NAME, ofstream::out | ofstream::trunc);
+
+	for (int i = 0; i < 7; i++)
+	{
+		storeDailyPlan(weeklyPlan[i],fs);
+	}
+
+	fs.close();
 	this_thread::sleep_for(chrono::seconds(1));
 }
 

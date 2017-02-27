@@ -23,6 +23,10 @@ public:
 
 	void print(); 
 
+	int getStepGoal();
+	string getName();
+	string getDate();
+
 	string returnFormattedData();
 
 
