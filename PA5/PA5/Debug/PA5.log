@@ -1,7 +1,14 @@
-﻿  FitnessAppWrapper.cpp
-c:\users\william\documents\github\cpts_122\pa5\pa5\fitnessappwrapper.cpp(131): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  plan.cpp
+  main.cpp
+  FitnessAppWrapper.cpp
+c:\users\wil\documents\github\cpts_122\pa5\pa5\fitnessappwrapper.cpp(163): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\time.h(505): note: see declaration of 'localtime'
-c:\users\william\documents\github\cpts_122\pa5\pa5\fitnessappwrapper.cpp(137): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\wil\documents\github\cpts_122\pa5\pa5\fitnessappwrapper.cpp(169): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
-  PA5.vcxproj -> C:\Users\William\Documents\GitHub\CPTS_122\PA5\Debug\PA5.exe
-  PA5.vcxproj -> C:\Users\William\Documents\GitHub\CPTS_122\PA5\Debug\PA5.pdb (Full PDB)
+  ExercisePlan.cpp
+  DietPlan.cpp
+  date.cpp
+  Generating Code...
+  LINK : C:\Users\Wil\Documents\GitHub\CPTS_122\PA5\Debug\PA5.exe not found or not built by the last incremental link; performing full link
+  PA5.vcxproj -> C:\Users\Wil\Documents\GitHub\CPTS_122\PA5\Debug\PA5.exe
+  PA5.vcxproj -> C:\Users\Wil\Documents\GitHub\CPTS_122\PA5\Debug\PA5.pdb (Full PDB)

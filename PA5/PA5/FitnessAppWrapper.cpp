@@ -102,25 +102,58 @@ void FitnessAppWrapper::storeWeeklyPlan(ExercisePlan weeklyPlan[])
 
 void FitnessAppWrapper::editDailyPlan(DietPlan &plan)
 {
-	cout << "test" << endl;
+	string tName, tDate;
+	int tCal;
+
+	cout << "Enter new name: ";
+	cin >> tName;
+
+	cout << "Enter new Cal Goal: ";
+	cin >> tCal;
+
+	cout << "Enter new date in mm/dd/yyyy: ";
+	cin >> tDate;
+
+	DietPlan tPlan = DietPlan(tCal, tName, Date(tDate));
+	plan = tPlan;
 	this_thread::sleep_for(chrono::seconds(1));
 }
 
 void FitnessAppWrapper::editDailyPlan(ExercisePlan &plan)
 {
-	cout << "test" << endl;
+	string tName, tDate;
+	int tStep;
+
+	cout << "Enter new name: ";
+	cin >> tName;
+
+	cout << "Enter new steps Goal: ";
+	cin >> tStep;
+
+	cout << "Enter new date in mm/dd/yyyy: ";
+	cin >> tDate;
+
+	ExercisePlan tPlan = ExercisePlan(tStep, tName, Date(tDate));
+	plan = tPlan;
+
 	this_thread::sleep_for(chrono::seconds(1));
 }
 
 void FitnessAppWrapper::editWeeklyPlan(DietPlan(&weeklyPlan)[7])
 {
-	cout << "test" << endl;
+	for (int i = 0; i < 7; i++)
+	{
+		editDailyPlan(weeklyPlan[i]);
+	}
 	this_thread::sleep_for(chrono::seconds(1));
 }
 
 void FitnessAppWrapper::editWeeklyPlan(ExercisePlan(&weeklyPlan)[7])
 {
-	cout << "test" << endl;
+	for (int i = 0; i < 7; i++)
+	{
+		editDailyPlan(weeklyPlan[i]);
+	}
 	this_thread::sleep_for(chrono::seconds(1));
 }
 
