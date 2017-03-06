@@ -36,6 +36,24 @@ DietPlan::~DietPlan()
 
 }
 
+ostream& operator<<(ostream& os, const DietPlan& dietPlan)
+{
+	os << dietPlan.getName() << endl << dietPlan.getCalGoal() << endl << dietPlan.getDate() << endl << endl;
+}
+
+ofstream& operator<<(ofstream& os, const DietPlan& plan)
+{
+	os << plan.getName() << endl << plan.getCalGoal() << endl << plan.getDate() << endl << endl;
+}
+
+ifstream& operator>>(ifstream& is, DietPlan& plan)
+{
+	string name, goal, date;
+
+	is >> name >> goal >> date;
+	plan = DietPlan(goal, name, date);
+}
+
 void DietPlan::setCalGoal(int newCals)
 {
 	calGoal = newCals;
@@ -51,17 +69,17 @@ string DietPlan::returnFormattedData()
 	return "Calorie goal: " + to_string(calGoal) + " Plan name: " + name + " date: " + date.returnFormattedData();
 }
 
-int DietPlan::getCalGoal()
+int DietPlan::getCalGoal() const
 {
 	return calGoal;
 }
 
-string DietPlan::getName()
+string DietPlan::getName() const
 {
 	return name;
 }
 
-string DietPlan::getDate()
+string DietPlan::getDate() const
 {
 	return date.returnFormattedData();
 }

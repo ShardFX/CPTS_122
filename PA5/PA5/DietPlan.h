@@ -1,5 +1,6 @@
 #pragma once
 #include "plan.h"
+#include <fstream>
 
 class DietPlan: public Plan
 {
@@ -20,11 +21,15 @@ public:
 	//destructor
 	~DietPlan();
 
+	friend ostream& operator<<(ostream& os, const DietPlan& dietPlan);
+	friend ofstream& operator<<(ofstream& os, const DietPlan& exercisePlan);
+	friend ifstream& operator>>(ifstream& os, DietPlan& exercisePlan);
+
 	void setCalGoal(int newCals);
 
-	int getCalGoal();
-	string getName();
-	string getDate();
+	int getCalGoal() const;
+	string getName() const;
+	string getDate() const;
 
 	void print();
 	string returnFormattedData();

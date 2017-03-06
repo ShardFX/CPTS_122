@@ -1,6 +1,6 @@
 #pragma once
 #include "plan.h"
-
+#include <fstream>
 class ExercisePlan : public Plan
 {
 private:
@@ -19,13 +19,17 @@ public:
 	//destructor
 	~ExercisePlan();
 	
+	friend ostream & operator<<(ostream & os, const ExercisePlan & exercisePlan);
+	friend ofstream& operator<<(ofstream& os, const ExercisePlan& exercisePlan);
+	friend ifstream& operator>>(ifstream& os, ExercisePlan& exercisePlan);
+
 	void setStepGoal(int newStepGoal);
 
 	void print(); 
 
-	int getStepGoal();
-	string getName();
-	string getDate();
+	int getStepGoal() const;
+	string getName() const;
+	string getDate() const;
 
 	string returnFormattedData();
 

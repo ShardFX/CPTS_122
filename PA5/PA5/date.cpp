@@ -49,7 +49,7 @@ void Date::print()
 	cout << "Day: " << day << " Month: " << month << " Year: " << year << endl;
 }
 
-string Date::returnFormattedData()
+string Date::returnFormattedData() const
 {
 	return to_string(day) +"/" + to_string(month) + "/" + to_string(year);
 }

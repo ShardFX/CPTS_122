@@ -34,6 +34,24 @@ ExercisePlan::~ExercisePlan()
 
 }
 
+ostream& operator<<(ostream& os, const ExercisePlan& exercisePlan)
+{
+	os << exercisePlan.getName() << endl << exercisePlan.getStepGoal() << endl << exercisePlan.getDate() << endl << endl;
+}
+
+ofstream& operator<<(ofstream& os, const ExercisePlan& exercisePlan)
+{
+	os << exercisePlan.getName() << endl << exercisePlan.getStepGoal() << endl << exercisePlan.getDate() << endl << endl;
+}
+
+ifstream& operator>>(ifstream& is, ExercisePlan exercisePlan)
+{
+	string name, goal, date;
+
+	is >> name >> goal >> date;
+	exercisePlan = ExercisePlan(goal, name, date);
+}
+
 void ExercisePlan::setStepGoal(int newStepGoal)
 {
 	stepGoal = newStepGoal;
@@ -50,17 +68,17 @@ string ExercisePlan::returnFormattedData()
 	return "Steps goal: " + to_string(stepGoal) + " Plan name: " + name + " date: " + date.returnFormattedData();
 }
 
-int ExercisePlan::getStepGoal()
+int ExercisePlan::getStepGoal() const
 {
 	return stepGoal;
 }
 
-string ExercisePlan::getName()
+string ExercisePlan::getName() const
 {
 	return name;
 }
 
-string ExercisePlan::getDate()
+string ExercisePlan::getDate() const
 {
 	return date.returnFormattedData();
 }

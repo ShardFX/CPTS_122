@@ -19,6 +19,6 @@ public:
 	void setDate(int newDay, int newMonth, int newYear);
 
 	void print();
-	string returnFormattedData();
+	string returnFormattedData() const;
 
 };
