@@ -1,11 +1,13 @@
 #include "BST.h"
 
+/*
+Node Class definitions
+*/
 
-//node methods
-
-Node::Node(int newData)
+Node::Node(char newKey, string newValue)
 {
-	mData = newData;
+	mKey = newKey;
+	mValue = newValue;
 	mpLeft = nullptr;
 	mpRight = nullptr;
 }
@@ -14,9 +16,14 @@ Node::~Node()
 {
 }
 
-int Node::getData() const
+string Node::getValue() const
 {
-	return mData;
+	return mValue;
+}
+
+char Node::getKey() const
+{
+	return mKey;
 }
 
 Node *& Node::getLeft()
@@ -29,9 +36,14 @@ Node *& Node::getRight()
 	return mpRight;
 }
 
-void Node::setData(const int newData)
+void Node::setKey(const char newKey)
 {
-	mData = newData;
+	mKey = newKey;
+}
+
+void Node::setValue(const string newValue)
+{
+	mValue = newValue;
 }
 
 void Node::setLeft(Node * const newLeft)
@@ -44,10 +56,9 @@ void Node::setRight(Node * const newRight)
 	mpRight = newRight;
 }
 
-
-
-
-//BST class Methods
+/*
+BST class definitions
+*/
 
 BST::BST()
 {
@@ -73,24 +84,24 @@ void BST::setRoot(Node * const newRoot)
 	mpRoot = newRoot;
 }
 
-void BST::insert(int data)
+void BST::insert(char key, string value)
 {
-	insert(this->mpRoot, data);
+	insert(this->mpRoot, toupper(key), value);
 }
 
-void BST::insert(Node *& pTree, int data)
+void BST::insert(Node *& pTree, char key, string value)
 {
 	if (pTree = nullptr)
 	{
-		pTree = new Node(data);
+		pTree = new Node(key, value);
 	}
-	else if (data < pTree->getData())
+	else if (pTree->getKey() > key)
 	{
-		insert(pTree->getLeft(), data);
+		insert(pTree->getLeft(), key, value);
 	}
-	else if (data > pTree->getData())
+	else if (pTree->getKey() < key)
 	{
-		insert(pTree->getRight(), data);
+		insert(pTree->getRight(), key, value);
 	}
 
 }
@@ -103,6 +114,6 @@ void BST::inorder()
 void BST::inorder(Node *& pTree)
 {
 	inorder(pTree->getLeft());
-	cout << pTree->getData() << endl;
+	cout << pTree->getKey() << " " << pTree->getValue() << endl;
 	inorder(pTree->getRight());
 }
