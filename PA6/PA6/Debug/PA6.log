@@ -1,17 +1,4 @@
-﻿  BST.cpp
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.h(30): error C3646: 'mData': unknown override specifier
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.h(30): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.h(47): error C2061: syntax error: identifier 'string'
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.h(53): error C2061: syntax error: identifier 'string'
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.cpp(8): error C2065: 'mData': undeclared identifier
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.cpp(19): error C2065: 'mData': undeclared identifier
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.cpp(34): error C2065: 'mData': undeclared identifier
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.cpp(77): error C2511: 'void BST::insert(int)': overloaded member function not found in 'BST'
-  c:\users\william\documents\github\cpts_122\pa6\pa6\bst.h(36): note: see declaration of 'BST'
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.cpp(78): error C2671: 'BST::insert': static member functions do not have 'this' pointers
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.cpp(78): error C2227: left of '->mpRoot' must point to class/struct/union/generic type
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.cpp(78): error C2661: 'BST::insert': no overloaded function takes 2 arguments
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.cpp(82): error C2511: 'void BST::insert(Node *&,int)': overloaded member function not found in 'BST'
-  c:\users\william\documents\github\cpts_122\pa6\pa6\bst.h(36): note: see declaration of 'BST'
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.cpp(89): error C2661: 'BST::insert': no overloaded function takes 2 arguments
-c:\users\william\documents\github\cpts_122\pa6\pa6\bst.cpp(93): error C2661: 'BST::insert': no overloaded function takes 2 arguments
+﻿  main.cpp
+c:\users\william\documents\github\cpts_122\pa6\pa6\main.cpp(12): warning C4101: 'key': unreferenced local variable
+  PA6.vcxproj -> C:\Users\William\Documents\GitHub\CPTS_122\PA6\Debug\PA6.exe
+  PA6.vcxproj -> C:\Users\William\Documents\GitHub\CPTS_122\PA6\Debug\PA6.pdb (Full PDB)
