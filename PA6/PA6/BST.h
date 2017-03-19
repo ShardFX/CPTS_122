@@ -53,10 +53,14 @@ public:
 	void insert(char key, string value);
 	void inorder();
 
+	bool findInTree(char c);
+
 private:
 	Node *mpRoot;
 
 	void insert(Node *& pTree, char key, string value);
 
 	void inorder(Node *& pTree);
+
+	bool findInTree(Node *&pTree, const char c);
 };

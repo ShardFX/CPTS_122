@@ -91,7 +91,7 @@ void BST::insert(char key, string value)
 
 void BST::insert(Node *& pTree, char key, string value)
 {
-	if (pTree = nullptr)
+	if (pTree == NULL)
 	{
 		pTree = new Node(key, value);
 	}
@@ -111,9 +111,31 @@ void BST::inorder()
 	inorder(this->mpRoot);
 }
 
+bool BST::findInTree(char c)
+{
+	return findInTree(this->mpRoot, c);
+}
+
 void BST::inorder(Node *& pTree)
 {
-	inorder(pTree->getLeft());
-	cout << pTree->getKey() << " " << pTree->getValue() << endl;
-	inorder(pTree->getRight());
+	if (pTree != nullptr)
+	{
+		inorder(pTree->getLeft());
+		cout << pTree->getKey() << " " << pTree->getValue() << endl;
+		inorder(pTree->getRight());
+	}
 }
+
+bool BST::findInTree(Node *& pTree, const char c)
+{
+	if (pTree != nullptr)
+	{
+		findInTree(pTree->getLeft(), c);
+		if (pTree->getKey() == c) {
+			cout << pTree->getValue() << " ";
+			return true;
+		}
+		findInTree(pTree->getRight(), c);
+	}
+}
+

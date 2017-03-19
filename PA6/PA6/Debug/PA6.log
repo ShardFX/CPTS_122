@@ -1,4 +1,5 @@
 ﻿  main.cpp
-c:\users\william\documents\github\cpts_122\pa6\pa6\main.cpp(12): warning C4101: 'key': unreferenced local variable
+  fileio.cpp
+  Generating Code...
   PA6.vcxproj -> C:\Users\William\Documents\GitHub\CPTS_122\PA6\Debug\PA6.exe
   PA6.vcxproj -> C:\Users\William\Documents\GitHub\CPTS_122\PA6\Debug\PA6.pdb (Full PDB)

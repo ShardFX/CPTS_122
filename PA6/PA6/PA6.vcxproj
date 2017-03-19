@@ -143,13 +143,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BST.cpp" />
+    <ClCompile Include="fileio.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BST.h" />
+    <ClInclude Include="fileio.h" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Covert.txt" />
+    <Text Include="Convert.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MorseTable.csv" />
