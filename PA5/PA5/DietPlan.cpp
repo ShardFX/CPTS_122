@@ -36,22 +36,23 @@ DietPlan::~DietPlan()
 
 }
 
-ostream& operator<<(ostream& os, const DietPlan& dietPlan)
+void operator<<(ostream& os, const DietPlan& dietPlan)
 {
 	os << dietPlan.getName() << endl << dietPlan.getCalGoal() << endl << dietPlan.getDate() << endl << endl;
 }
 
-ofstream& operator<<(ofstream& os, const DietPlan& plan)
+void operator<<(ofstream& os, const DietPlan& plan)
 {
 	os << plan.getName() << endl << plan.getCalGoal() << endl << plan.getDate() << endl << endl;
 }
 
-ifstream& operator>>(ifstream& is, DietPlan& plan)
+DietPlan& operator>>(ifstream& is, DietPlan& plan)
 {
 	string name, goal, date;
 
 	is >> name >> goal >> date;
 	plan = DietPlan(goal, name, date);
+	return plan;
 }
 
 void DietPlan::setCalGoal(int newCals)

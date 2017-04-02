@@ -19,9 +19,9 @@ public:
 	//destructor
 	~ExercisePlan();
 	
-	friend ostream & operator<<(ostream & os, const ExercisePlan & exercisePlan);
-	friend ofstream& operator<<(ofstream& os, const ExercisePlan& exercisePlan);
-	friend ifstream& operator>>(ifstream& os, ExercisePlan& exercisePlan);
+	friend void operator<<(ostream & os, const ExercisePlan & exercisePlan);
+	friend void operator<<(ofstream& os, const ExercisePlan& exercisePlan);
+	friend ExercisePlan& operator>>(ifstream& os, ExercisePlan& exercisePlan);
 
 	void setStepGoal(int newStepGoal);
 

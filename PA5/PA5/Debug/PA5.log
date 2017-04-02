@@ -1,15 +1,10 @@
-﻿  main.cpp
-c:\users\william\documents\github\cpts_122\pa5\pa5\exerciseplan.h(22): error C2804: binary 'operator <<' has too many parameters
-  FitnessAppWrapper.cpp
-c:\users\william\documents\github\cpts_122\pa5\pa5\exerciseplan.h(22): error C2804: binary 'operator <<' has too many parameters
-c:\users\william\documents\github\cpts_122\pa5\pa5\fitnessappwrapper.cpp(163): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+﻿  FitnessAppWrapper.cpp
+c:\users\wil\documents\github\cpts_122\pa5\pa5\fitnessappwrapper.cpp(164): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\time.h(505): note: see declaration of 'localtime'
-c:\users\william\documents\github\cpts_122\pa5\pa5\fitnessappwrapper.cpp(169): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+c:\users\wil\documents\github\cpts_122\pa5\pa5\fitnessappwrapper.cpp(170): warning C4996: 'scanf': This function or variable may be unsafe. Consider using scanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
   c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\stdio.h(1270): note: see declaration of 'scanf'
-  ExercisePlan.cpp
-c:\users\william\documents\github\cpts_122\pa5\pa5\exerciseplan.h(22): error C2804: binary 'operator <<' has too many parameters
-c:\users\william\documents\github\cpts_122\pa5\pa5\exerciseplan.cpp(40): error C3861: 'getName': identifier not found
-c:\users\william\documents\github\cpts_122\pa5\pa5\exerciseplan.cpp(40): error C3861: 'getCalGoal': identifier not found
-c:\users\william\documents\github\cpts_122\pa5\pa5\exerciseplan.cpp(40): error C3861: 'getDate': identifier not found
-  DietPlan.cpp
   Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  PA5.vcxproj -> C:\Users\Wil\Documents\GitHub\CPTS_122\PA5\Debug\PA5.exe
+  PA5.vcxproj -> C:\Users\Wil\Documents\GitHub\CPTS_122\PA5\Debug\PA5.pdb (Full PDB)

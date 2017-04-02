@@ -21,9 +21,9 @@ public:
 	//destructor
 	~DietPlan();
 
-	friend ostream& operator<<(ostream& os, const DietPlan& dietPlan);
-	friend ofstream& operator<<(ofstream& os, const DietPlan& exercisePlan);
-	friend ifstream& operator>>(ifstream& os, DietPlan& exercisePlan);
+	friend void operator<<(ostream& os, const DietPlan& dietPlan);
+	friend void operator<<(ofstream& os, const DietPlan& exercisePlan);
+	friend DietPlan& operator>>(ifstream& os, DietPlan& exercisePlan);
 
 	void setCalGoal(int newCals);
 

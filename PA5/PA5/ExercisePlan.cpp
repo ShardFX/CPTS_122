@@ -34,22 +34,23 @@ ExercisePlan::~ExercisePlan()
 
 }
 
-ostream& operator<<(ostream& os, const ExercisePlan& exercisePlan)
+void operator<<(ostream& os, const ExercisePlan& exercisePlan)
 {
 	os << exercisePlan.getName() << endl << exercisePlan.getStepGoal() << endl << exercisePlan.getDate() << endl << endl;
 }
 
-ofstream& operator<<(ofstream& os, const ExercisePlan& exercisePlan)
+void operator<<(ofstream& os, const ExercisePlan& exercisePlan)
 {
 	os << exercisePlan.getName() << endl << exercisePlan.getStepGoal() << endl << exercisePlan.getDate() << endl << endl;
 }
 
-ifstream& operator>>(ifstream& is, ExercisePlan exercisePlan)
+ExercisePlan& operator>>(ifstream& is, ExercisePlan exercisePlan)
 {
 	string name, goal, date;
 
 	is >> name >> goal >> date;
 	exercisePlan = ExercisePlan(goal, name, date);
+	return exercisePlan;
 }
 
 void ExercisePlan::setStepGoal(int newStepGoal)

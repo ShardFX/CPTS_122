@@ -40,7 +40,7 @@ public:
 	void storeDailyPlan(ExercisePlan weeklyPlan, ofstream &pFile);
 	void storeWeeklyPlan(ExercisePlan weeklyPlan[]);
 
-	void displayMenu(DietPlan dietPlan[], ExercisePlan exercisePlan[]);
+	bool displayMenu(DietPlan dietPlan[], ExercisePlan exercisePlan[]);
 
 	template<typename T>
 	void displayDailyPlan(T plan[])

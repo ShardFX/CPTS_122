@@ -157,23 +157,23 @@ void FitnessAppWrapper::editWeeklyPlan(ExercisePlan(&weeklyPlan)[7])
 	this_thread::sleep_for(chrono::seconds(1));
 }
 
-void FitnessAppWrapper::displayMenu(DietPlan dietPlan[], ExercisePlan exercisePlan[])
+bool FitnessAppWrapper::displayMenu(DietPlan dietPlan[], ExercisePlan exercisePlan[])
 {
 	time_t ctime = time(NULL);
 	tm *timeStats = localtime(&ctime);
-	
+	bool success = true;
 	system("cls");
 	Commands c = MENU;
 
 	printf("\n(1)   Load Weekly Diet Plan\n(2)   Load Weekly Exercise Plan\n(3)   Store Weekly Diet Plan\n(4)   Store Weekly Exercise Plan\n(5)   Display Weekly Diet Plan\n(6)   Display Weekly Exercise Plan\n(7)   Edit Daily Diet Plan\n(8)   Edit Daily Exercise Plan\n(9)   Exit\n");
 	scanf("%d", &c);
 
-	while (true)
+	while (success)
 	{
 		switch (c)
 		{
 		case MENU:
-			displayMenu(dietPlan, exercisePlan);
+			success = displayMenu(dietPlan, exercisePlan);
 			break;
 		case LWDP:
 			loadWeeklyPlan(dietPlan);
@@ -208,11 +208,17 @@ void FitnessAppWrapper::displayMenu(DietPlan dietPlan[], ExercisePlan exercisePl
 			c = MENU;
 			break;
 		case EXIT:
-			c = MENU;
+			storeWeeklyPlan(exercisePlan);
+			storeWeeklyPlan(dietPlan);
+			success = false;
 			break;
 		default:
 			c = MENU;
 			break;
 		}
+		if (c == EXIT) {
+			break;
+		}
 	}
+	return false;
 }
