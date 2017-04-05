@@ -1,6 +1,5 @@
 #include <ctime>
 #include "LinkedList.h"
-#include "main.h"
 
 
 int main(void)
@@ -12,7 +11,7 @@ int main(void)
 	struct tm * now = localtime(&t);
 	Date today = Date(now->tm_mday, now->tm_mon, now->tm_year + 1900);
 
-	List masterList;
+	List masterList = List();
 
 	bool success = true;
 	int c = 0;
@@ -25,6 +24,7 @@ int main(void)
 	cout << "(5)	Edit Absences" << endl;
 	cout << "(6)	Generate Report" << endl;
 	cout << "(7)	Exit" << endl;
+	cin >> c;
 
 	while (success)
 	{
@@ -39,21 +39,22 @@ int main(void)
 			cout << "(5)	Edit Absences" << endl;
 			cout << "(6)	Generate Report" << endl;
 			cout << "(7)	Exit" << endl;
+			cin >> c;
 			break;
 		case 1:
-			masterList.import(courseFile);
+			masterList.import(courseFile, true);
 			c = 0;
 			break;
 		case 2:
-			masterList.load();
+			masterList.import(masterFile, false);
 			c = 0;
 			break;
 		case 3:
-			masterList.store();
+			masterList.save(masterFile);
 			c = 0;
 			break;
 		case 4:
-			masterList.markAbsences();
+			masterList.markAbsences(today);
 			c = 0;
 			break;
 		case 5:

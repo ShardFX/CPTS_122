@@ -2,6 +2,7 @@
 #include "LinkedStack.h"
 #include <fstream>
 #include <sstream>
+#include <regex>
 
 
 class ListNode 
@@ -69,4 +70,9 @@ public:
 	void listByAbsenseCount(int minAbsenses);
 
 	void import(string filename, bool overwrite);
+	void save(string filename);
+
+	void markAbsences(Date date);
+	void editAbsences();
+	void generateReport();
 };

@@ -10,11 +10,18 @@ StackNode::StackNode()
 	mNext = nullptr;
 }
 
+StackNode::StackNode(Date date)
+{
+	mDate = date;
+	mNext = nullptr;
+}
+
 StackNode::StackNode(StackNode *& newNode)
 {
 	mDate = newNode->getDate();
 	mNext = newNode->getNext();
 }
+
 
 StackNode::~StackNode()
 {

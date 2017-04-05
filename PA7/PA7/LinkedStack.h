@@ -9,6 +9,7 @@ private:
 
 public:
 	StackNode();
+	StackNode(Date date);
 	StackNode(StackNode *& newNode);
 	~StackNode();
 	

@@ -231,22 +231,41 @@ void List::import(string filename, bool overwrite)
 {
 	ifstream file = ifstream(filename);
 	string line, Record, ID, Name, Email, Units, Program, level;
-	stringstream ss;
+	regex integer("(\\+|-)?[[:digit:]]+");
+
+
+
 	getline(file, line);//kills header line
 
 	if (overwrite)
 	{
 		while (getline(file, line))
 		{
+			stringstream ss;
 			ss << line;
 			getline(ss, Record, ',');
-			getline(ss, ID, '"');
+			getline(ss, ID, ',');
+			getline(ss, Name, '"');
 			getline(ss, Name, '"');
 			getline(ss, Email, ',');
 			getline(ss, Email, ',');
 			getline(ss, Units, ',');
 			getline(ss, Program, ',');
 			getline(ss, level, ',');
+
+			if (!regex_match(Units, integer))
+			{
+				Units = "0";
+			}
+			if (!regex_match(Record, integer))
+			{
+				Units = "0";
+			}
+			if (!regex_match(ID, integer))
+			{
+				Units = "0";
+			}
+
 
 			ListNode *node = new ListNode(stoi(Record), stoi(ID), Name, Email, stoi(Units), Program, level, Stack(), 0);
 
@@ -258,6 +277,7 @@ void List::import(string filename, bool overwrite)
 		this->mHead = nullptr;
 		while (getline(file, line))
 		{
+			stringstream ss;
 			ss << line;
 			getline(ss, Record, ',');
 			getline(ss, ID, '"');
@@ -268,9 +288,102 @@ void List::import(string filename, bool overwrite)
 			getline(ss, Program, ',');
 			getline(ss, level, ',');
 
+			if (!regex_match(Units, integer))
+			{
+				Units = "0";
+			}
+			if (!regex_match(Record, integer))
+			{
+				Units = "0";
+			}
+			if (!regex_match(ID, integer))
+			{
+				Units = "0";
+			}
+
 			ListNode *node = new ListNode(stoi(Record), stoi(ID), Name, Email, stoi(Units), Program, level, Stack(), 0);
 
 			this->insertAtFront(node);
 		}
 	}
+}
+
+void List::save(string filename)
+{
+	ofstream file = ofstream(filename);
+	ListNode * cur = this->mHead;
+
+	while (cur != nullptr)
+	{
+		file << cur->getRecord() << ",";
+		file << cur->getID() << ",";
+		file << cur->getName() << ",";
+		file << cur->getEmail() << ",";
+		file << cur->getUnits() << ",";
+		file << cur->getMajor() << ",";
+		file << cur->getLevel() << endl;
+
+		cur = cur->getNext();
+	}
+
+}
+
+void List::markAbsences(Date date)
+{
+	ListNode * cur = this->mHead;
+	string in;
+
+	while (cur != nullptr)
+	{
+		cout << "Is " << cur->getName() << " absent?(y/n)" << endl;
+		cin >> in;
+		if (in == "y" || in == "Y")
+		{
+			cur->getAbsences().push(StackNode(date));
+			cur->incrementAbsences();
+		}
+		cur = cur->getNext();
+	}
+}
+
+void List::editAbsences()
+{
+	ListNode * cur = this->mHead;
+	string in;
+
+	while (cur != nullptr)
+	{
+		cout << "Edit " << cur->getName() << " absences?(y/n)" << endl;
+		cin >> in;
+		if (in == "y" || in == "Y")
+		{
+			cout << "Absences are permanent." << endl;
+		}
+		cur = cur->getNext();
+	}
+
+}
+
+void List::generateReport()
+{
+	int in = 0;
+
+	system("cls");
+	cout << "(1)	Report all absences" << endl;
+	cout << "(2)	Report high absences" << endl;
+	cin >> in;
+
+	switch (in)
+	{
+	case 1:
+		this->listRecentAbsenses();
+		break;
+	case 2:
+		cout << "Min number of absences to show? ";
+		cin >> in;
+		this->listByAbsenseCount(in);
+		break;
+	default:
+		break;
+}
 }
