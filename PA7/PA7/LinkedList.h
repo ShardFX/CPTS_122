@@ -1,5 +1,7 @@
 #pragma once
 #include "LinkedStack.h"
+#include <fstream>
+#include <sstream>
 
 
 class ListNode 
@@ -7,12 +9,11 @@ class ListNode
 private:
 	int mRecord;
 	int mID;
-	string mFName;
-	string mLName;
+	string mName;
 	string mEmail;
 	int mUnits;
 	string mMajor;
-	enum Level mLevel;
+	string mLevel;
 	Stack mAbsences;
 	int mNumAbsences;
 
@@ -20,31 +21,29 @@ private:
 
 public:
 	ListNode();
-	ListNode(int record, int id, string firstName, string lastName, string email
-		, int units, string major, Level level, Stack absences, int numAbsences);
+	ListNode(int record, int id, string name, string email
+		, int units, string major, string level, Stack absences, int numAbsences);
 	ListNode(ListNode *& newListNode);
 	~ListNode();
 
 	void setRecord(int record);
 	void setID(int ID);
-	void setFirstName(string firstName);
-	void setLastName(string lastName);
+	void setName(string name);
 	void setEmail(string email);
 	void setUnits(int units);
 	void setMajor(string major);
-	void setLevel(enum Level l);
+	void setLevel(string level);
 	void setTotalNumAbsences(int totalAbsences);
 	void incrementAbsences();
 	void setNext(ListNode *& newNext);
 
 	int getRecord() const;
 	int getID() const;
-	string getFirstName() const;
-	string getLastName() const;
+	string getName() const;
 	string getEmail() const;
 	int getUnits() const;
 	string getMajor() const;
-	Level getLevel() const;
+	string getLevel() const;
 	int getNumAbsences() const;
 	Stack getAbsences();
 	ListNode *& getNext();
@@ -52,9 +51,6 @@ public:
 	
 };
 
-enum Level {
-	freshman, sophomore, junior, senior, graduate
-};
 
 class List
 {
@@ -68,9 +64,9 @@ public:
 
 	bool insertAtFront(ListNode *& newNode);
 	ListNode *& searchByID(int ID);
-	ListNode *& searchByName(string firstName, string lastName);
+	ListNode *& searchByName(string name);
 	void listRecentAbsenses();
 	void listByAbsenseCount(int minAbsenses);
 
-	void import(string filename);
+	void import(string filename, bool overwrite);
 };

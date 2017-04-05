@@ -9,15 +9,15 @@ ListNode::ListNode()
 	pNext = nullptr;
 }
 
-ListNode::ListNode(int record, int id, string firstName, string lastName, string email, int units, string major, Level level, Stack absences, int numAbsences)
+ListNode::ListNode(int record, int id, string name, string email, int units, string major, string level, Stack absences, int numAbsences)
 {
 	mRecord = record;
 	mID = id;
-	mFName = firstName;
-	mLName = lastName;
+	mName = name;
 	mEmail = email;
 	mUnits = units;
 	mMajor = major;
+	mLevel = level;
 	mAbsences = absences;
 	mNumAbsences = numAbsences;
 	pNext = nullptr;
@@ -27,11 +27,11 @@ ListNode::ListNode(ListNode *& newListNode)
 {
 	mRecord = newListNode->getRecord();
 	mID = newListNode->getID();
-	mFName = newListNode->getFirstName();
-	mLName = newListNode->getLastName();
+	mName = newListNode->getName();
 	mEmail = newListNode->getEmail();
 	mUnits = newListNode->getUnits();
 	mMajor = newListNode->getMajor();
+	mLevel = newListNode->getLevel();
 	mAbsences = newListNode->mAbsences;
 	mNumAbsences = newListNode->getNumAbsences();
 	pNext = newListNode->getNext();
@@ -51,14 +51,9 @@ void ListNode::setID(int ID)
 	mID = ID;
 }
 
-void ListNode::setFirstName(string firstName)
+void ListNode::setName(string name)
 {
-	mFName = firstName;
-}
-
-void ListNode::setLastName(string lastName)
-{
-	mLName = lastName;
+	mName = name;
 }
 
 void ListNode::setEmail(string email)
@@ -76,9 +71,9 @@ void ListNode::setMajor(string major)
 	mMajor = major;
 }
 
-void ListNode::setLevel(enum Level l)
+void ListNode::setLevel(string level)
 {
-	mLevel = l;
+	mLevel = level;
 }
 
 void ListNode::setTotalNumAbsences(int totalAbsences)
@@ -106,15 +101,11 @@ int ListNode::getID() const
 	return mID;
 }
 
-string ListNode::getFirstName() const
+string ListNode::getName() const
 {
-	return mFName;
+	return mName;
 }
 
-string ListNode::getLastName() const
-{
-	return mLName;
-}
 
 string ListNode::getEmail() const
 {
@@ -131,7 +122,7 @@ string ListNode::getMajor() const
 	return mMajor;
 }
 
-Level ListNode::getLevel() const
+string ListNode::getLevel() const
 {
 	return mLevel;
 }
@@ -197,12 +188,12 @@ ListNode *& List::searchByID(int ID)
 	}
 }
 
-ListNode *& List::searchByName(string firstName, string lastName)
+ListNode *& List::searchByName(string name)
 {
 	ListNode * cur = mHead;
 	while (cur != nullptr)
 	{
-		if (cur->getFirstName() == firstName && cur->getLastName() == lastName)
+		if (cur->getName() == name)
 		{
 			return cur;
 		}
@@ -236,7 +227,50 @@ void List::listByAbsenseCount(int minAbsenses)
 	}
 }
 
-void List::import(string filename)
+void List::import(string filename, bool overwrite)
 {
+	ifstream file = ifstream(filename);
+	string line, Record, ID, Name, Email, Units, Program, level;
+	stringstream ss;
+	getline(file, line);//kills header line
 
+	if (overwrite)
+	{
+		while (getline(file, line))
+		{
+			ss << line;
+			getline(ss, Record, ',');
+			getline(ss, ID, '"');
+			getline(ss, Name, '"');
+			getline(ss, Email, ',');
+			getline(ss, Email, ',');
+			getline(ss, Units, ',');
+			getline(ss, Program, ',');
+			getline(ss, level, ',');
+
+			ListNode *node = new ListNode(stoi(Record), stoi(ID), Name, Email, stoi(Units), Program, level, Stack(), 0);
+
+			this->insertAtFront(node);
+		}
+	}
+	else
+	{
+		this->mHead = nullptr;
+		while (getline(file, line))
+		{
+			ss << line;
+			getline(ss, Record, ',');
+			getline(ss, ID, '"');
+			getline(ss, Name, '"');
+			getline(ss, Email, ',');
+			getline(ss, Email, ',');
+			getline(ss, Units, ',');
+			getline(ss, Program, ',');
+			getline(ss, level, ',');
+
+			ListNode *node = new ListNode(stoi(Record), stoi(ID), Name, Email, stoi(Units), Program, level, Stack(), 0);
+
+			this->insertAtFront(node);
+		}
+	}
 }
