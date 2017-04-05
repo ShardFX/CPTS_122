@@ -6,10 +6,11 @@ Definitions for List Node
 ListNode::ListNode()
 {
 	mID = 111;
+	mAbsences = new Stack();
 	pNext = nullptr;
 }
 
-ListNode::ListNode(int record, int id, string name, string email, int units, string major, string level, Stack absences, int numAbsences)
+ListNode::ListNode(int record, int id, string name, string email, int units, string major, string level, Stack *absences, int numAbsences)
 {
 	mRecord = record;
 	mID = id;
@@ -132,7 +133,7 @@ int ListNode::getNumAbsences() const
 	return mNumAbsences;
 }
 
-Stack ListNode::getAbsences()
+Stack *ListNode::getAbsences()
 {
 	return mAbsences;
 }
@@ -210,7 +211,7 @@ void List::listRecentAbsenses()
 		if (cur->getNumAbsences() > 0)
 		{
 			cout << cur->getID() << " : ";
-			cur->getAbsences().peek(tempDate);
+			cur->getAbsences()->peek(tempDate);
 			tempDate.print();
 		}
 		cur = cur->getNext();
@@ -267,7 +268,7 @@ void List::import(string filename, bool overwrite)
 			}
 
 
-			ListNode *node = new ListNode(stoi(Record), stoi(ID), Name, Email, stoi(Units), Program, level, Stack(), 0);
+			ListNode *node = new ListNode(stoi(Record), stoi(ID), Name, Email, stoi(Units), Program, level, new Stack(), 0);
 
 			this->insertAtFront(node);
 		}
@@ -301,7 +302,7 @@ void List::import(string filename, bool overwrite)
 				Units = "0";
 			}
 
-			ListNode *node = new ListNode(stoi(Record), stoi(ID), Name, Email, stoi(Units), Program, level, Stack(), 0);
+			ListNode *node = new ListNode(stoi(Record), stoi(ID), Name, Email, stoi(Units), Program, level, new Stack(), 0);
 
 			this->insertAtFront(node);
 		}
@@ -312,16 +313,16 @@ void List::save(string filename)
 {
 	ofstream file = ofstream(filename);
 	ListNode * cur = this->mHead;
-
+	file << ", ID, Name, Email, Units, Program, Level";
 	while (cur != nullptr)
 	{
-		file << cur->getRecord() << ",";
+		file << endl << cur->getRecord() << ",";
 		file << cur->getID() << ",";
-		file << cur->getName() << ",";
+		file << "\"" <<  cur->getName() << "\",";
 		file << cur->getEmail() << ",";
 		file << cur->getUnits() << ",";
 		file << cur->getMajor() << ",";
-		file << cur->getLevel() << endl;
+		file << cur->getLevel();
 
 		cur = cur->getNext();
 	}
@@ -339,7 +340,8 @@ void List::markAbsences(Date date)
 		cin >> in;
 		if (in == "y" || in == "Y")
 		{
-			cur->getAbsences().push(StackNode(date));
+			StackNode *temp = new StackNode(date);
+			cur->getAbsences()->push(temp);
 			cur->incrementAbsences();
 		}
 		cur = cur->getNext();
@@ -377,11 +379,13 @@ void List::generateReport()
 	{
 	case 1:
 		this->listRecentAbsenses();
+		this_thread::sleep_for(chrono::milliseconds(5000));
 		break;
 	case 2:
 		cout << "Min number of absences to show? ";
 		cin >> in;
 		this->listByAbsenseCount(in);
+		this_thread::sleep_for(chrono::milliseconds(5000));
 		break;
 	default:
 		break;

@@ -14,7 +14,9 @@ public:
 	~StackNode();
 	
 	Date getDate() const;
+	
 	StackNode *& getNext();
+	void setNext(StackNode *& newNode);
 
 };
 
@@ -28,8 +30,8 @@ public:
 	Stack(Stack *& newStack);
 	~Stack();
 
-	bool push(StackNode newNode);
-	bool pop(Date & popDate);
-	bool peek(Date & peekDate);
+	void push(StackNode * newNode);
+	void pop(Date & popDate);
+	void peek(Date & peekDate);
 
 };

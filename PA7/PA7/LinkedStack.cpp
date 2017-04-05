@@ -37,6 +37,11 @@ StackNode *& StackNode::getNext()
 	return mNext;
 }
 
+void StackNode::setNext(StackNode *& newNode)
+{
+	mNext = newNode;
+}
+
 
 /*
 Definitions for Stack
@@ -56,23 +61,29 @@ Stack::~Stack()
 {
 }
 
-bool Stack::push(StackNode newNode)
+void Stack::push(StackNode * newNode)
 {
+	if (mHead == nullptr)
+	{
+		mHead = newNode;
+	}
+	else
+	{
+		newNode->setNext(mHead);
+		mHead = newNode;
+	}
 
-
-	return false;
 }
 
-bool Stack::pop(Date & popDate)
+void Stack::pop(Date & popDate)
 {
+	popDate = mHead->getDate();
+	mHead = mHead->getNext();
 
-
-	return false;
 }
 
-bool Stack::peek(Date & peekDate)
+void Stack::peek(Date & peekDate)
 {
+	peekDate = mHead->getDate();
 
-
-	return false;
 }

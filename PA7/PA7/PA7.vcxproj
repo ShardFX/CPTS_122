@@ -143,14 +143,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Date.cpp" />
-    <ClCompile Include="GUI.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="LinkedStack.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Date.h" />
-    <ClInclude Include="GUI.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="LinkedStack.h" />
   </ItemGroup>

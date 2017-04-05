@@ -3,6 +3,8 @@
 #include <fstream>
 #include <sstream>
 #include <regex>
+#include <chrono>
+#include <thread>
 
 
 class ListNode 
@@ -15,7 +17,7 @@ private:
 	int mUnits;
 	string mMajor;
 	string mLevel;
-	Stack mAbsences;
+	Stack *mAbsences;
 	int mNumAbsences;
 
 	ListNode * pNext;
@@ -23,7 +25,7 @@ private:
 public:
 	ListNode();
 	ListNode(int record, int id, string name, string email
-		, int units, string major, string level, Stack absences, int numAbsences);
+		, int units, string major, string level, Stack *absences, int numAbsences);
 	ListNode(ListNode *& newListNode);
 	~ListNode();
 
@@ -46,7 +48,7 @@ public:
 	string getMajor() const;
 	string getLevel() const;
 	int getNumAbsences() const;
-	Stack getAbsences();
+	Stack * getAbsences();
 	ListNode *& getNext();
 
 	
