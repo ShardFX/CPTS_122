@@ -1,0 +1,84 @@
+#include "node.h"
+
+Node::Node()
+{
+	mData = "";
+	mLeft = nullptr;
+	mRight = nullptr;
+}
+
+Node::Node(std::string newData)
+{
+	mData = newData;
+	mLeft = nullptr;
+	mRight = nullptr;
+}
+
+Node::~Node()
+{
+}
+
+void Node::setData(std::string newData)
+{
+	mData = newData;
+}
+
+void Node::setLeft(Node * newLeft)
+{
+	mLeft = newLeft;
+}
+
+void Node::setRight(Node * newRight)
+{
+	mRight = newRight;
+}
+
+std::string Node::getData()
+{
+	return mData;
+}
+
+Node *& Node::getLeft()
+{
+	return mLeft;
+}
+
+Node *& Node::getRight()
+{
+	return mRight;
+}
+
+TransactionNode::TransactionNode()
+{
+	mUnits = 0;
+	mData = "";
+	this->setLeft(nullptr);
+	this->setRight(nullptr);
+}
+
+TransactionNode::TransactionNode(int newUnits, std::string newData)
+{
+	mUnits = 0;
+	mData = newData;
+	this->setLeft(nullptr);
+	this->setRight(nullptr);
+}
+
+TransactionNode::~TransactionNode()
+{
+}
+
+void TransactionNode::setUnits(int newUnits)
+{
+	mUnits = newUnits;
+}
+
+int TransactionNode::getUnits()
+{
+	return mUnits;
+}
+
+void TransactionNode::printData()
+{
+	std::cout << mUnits << " " << getData();
+}
