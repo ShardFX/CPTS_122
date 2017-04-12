@@ -7,7 +7,7 @@ private:
 	Node * mpRoot;
 	void destroyTree(Node * root);
 	void insert(Node *& root, Node * newNode);
-	void inOrderTraversal(Node * root);
+	void inOrderTraversal(Node *& root);
 	TransactionNode & findSmallest(Node *& root);
 	TransactionNode & findLargest(Node *& root);
 

@@ -75,15 +75,31 @@ void Stack::push(StackNode * newNode)
 
 }
 
-void Stack::pop(Date & popDate)
+bool Stack::pop(Date & popDate)
 {
-	popDate = mHead->getDate();
-	mHead = mHead->getNext();
-
+	if (mHead != nullptr)
+	{
+		popDate = mHead->getDate();
+		mHead = mHead->getNext();
+		return true;
+	}
+	return false;
 }
 
-void Stack::peek(Date & peekDate)
+bool Stack::peek(Date & peekDate)
 {
-	peekDate = mHead->getDate();
+	if (mHead != nullptr)
+	{
+		peekDate = mHead->getDate();
+		return true;
+	}
+	return false;
+}
 
+bool Stack::isEmpty()
+{
+	if (mHead == nullptr) {
+		return true;
+	}
+	return false;
 }

@@ -15,11 +15,14 @@ void BST::insert(Node * newNode)
 	insert(this->mpRoot, newNode);
 }
 
-void BST::inOrderTraversal(Node * root)
+void BST::inOrderTraversal(Node *& root)
 {
-	inOrderTraversal(root->getLeft());
-	std::cout << root->getData() << std::endl;
-	inOrderTraversal(root->getRight());
+	if (root != nullptr)
+	{
+		inOrderTraversal(root->getLeft());
+		std::cout << root->getData() << " : " << dynamic_cast<TransactionNode *>(root)->getUnits() << std::endl;
+		inOrderTraversal(root->getRight());
+	}
 }
 
 TransactionNode & BST::findSmallest()
@@ -94,7 +97,7 @@ TransactionNode & BST::findLargest(Node *& root)
 {
 	if (root->getRight() != nullptr)
 	{
-		return findSmallest(root->getRight());
+		return findLargest(root->getRight());
 	}
 	return dynamic_cast<TransactionNode &>((*root));
 }

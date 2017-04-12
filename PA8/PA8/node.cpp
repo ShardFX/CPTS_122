@@ -16,8 +16,6 @@ Node::Node(std::string newData)
 
 Node::~Node()
 {
-	delete mLeft;
-	delete mRight;
 }
 
 void Node::setData(std::string newData)
@@ -78,8 +76,6 @@ TransactionNode::TransactionNode(TransactionNode *& newNode)
 
 TransactionNode::~TransactionNode()
 {
-	delete getLeft();
-	delete getRight();
 }
 
 void TransactionNode::setUnits(int newUnits)

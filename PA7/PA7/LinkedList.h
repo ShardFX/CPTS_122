@@ -48,7 +48,7 @@ public:
 	string getMajor() const;
 	string getLevel() const;
 	int getNumAbsences() const;
-	Stack * getAbsences();
+	Stack *& getAbsences();
 	ListNode *& getNext();
 
 	

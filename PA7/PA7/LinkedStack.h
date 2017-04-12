@@ -31,7 +31,9 @@ public:
 	~Stack();
 
 	void push(StackNode * newNode);
-	void pop(Date & popDate);
-	void peek(Date & peekDate);
+	bool pop(Date & popDate);
+	bool peek(Date & peekDate);
+
+	bool isEmpty();
 
 };

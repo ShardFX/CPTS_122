@@ -1,14 +1,7 @@
 ﻿  LinkedList.cpp
-  Generating Code...
 c:\users\william\documents\github\cpts_122\pa7\pa7\linkedlist.cpp(190): warning C4715: 'List::searchByID': not all control paths return a value
 c:\users\william\documents\github\cpts_122\pa7\pa7\linkedlist.cpp(203): warning C4715: 'List::searchByName': not all control paths return a value
 c:\users\william\documents\github\cpts_122\pa7\pa7\linkedlist.cpp(186): warning C4172: returning address of local variable or temporary: cur
 c:\users\william\documents\github\cpts_122\pa7\pa7\linkedlist.cpp(199): warning C4172: returning address of local variable or temporary: cur
-cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
-  Compiling...
-  main.cpp
-c:\users\william\documents\github\cpts_122\pa7\pa7\main.cpp(11): warning C4996: 'localtime': This function or variable may be unsafe. Consider using localtime_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.10240.0\ucrt\time.h(505): note: see declaration of 'localtime'
-  Generating Code...
   PA7.vcxproj -> C:\Users\William\Documents\GitHub\CPTS_122\PA7\Debug\PA7.exe
   PA7.vcxproj -> C:\Users\William\Documents\GitHub\CPTS_122\PA7\Debug\PA7.pdb (Full PDB)

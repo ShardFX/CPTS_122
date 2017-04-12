@@ -133,7 +133,7 @@ int ListNode::getNumAbsences() const
 	return mNumAbsences;
 }
 
-Stack *ListNode::getAbsences()
+Stack *& ListNode::getAbsences()
 {
 	return mAbsences;
 }
@@ -231,7 +231,7 @@ void List::listByAbsenseCount(int minAbsenses)
 void List::import(string filename, bool overwrite)
 {
 	ifstream file = ifstream(filename);
-	string line, Record, ID, Name, Email, Units, Program, level;
+	string line, Record, ID, Name, Email, Units, Program, level ,date, numAbsences;
 	regex integer("(\\+|-)?[[:digit:]]+");
 
 
@@ -278,6 +278,7 @@ void List::import(string filename, bool overwrite)
 		this->mHead = nullptr;
 		while (getline(file, line))
 		{
+			Stack *temp = new Stack();
 			stringstream ss;
 			ss << line;
 			getline(ss, Record, ',');
@@ -288,7 +289,16 @@ void List::import(string filename, bool overwrite)
 			getline(ss, Units, ',');
 			getline(ss, Program, ',');
 			getline(ss, level, ',');
-
+			getline(ss, numAbsences, ',');
+			while (!ss.eof())
+			{
+				getline(ss, date, ',');
+				if (date != "")
+				{
+					Date tempDate = Date(date);
+					temp->push(new StackNode(tempDate));
+				}
+			}
 			if (!regex_match(Units, integer))
 			{
 				Units = "0";
@@ -302,8 +312,8 @@ void List::import(string filename, bool overwrite)
 				Units = "0";
 			}
 
-			ListNode *node = new ListNode(stoi(Record), stoi(ID), Name, Email, stoi(Units), Program, level, new Stack(), 0);
-
+			ListNode *node = new ListNode(stoi(Record), stoi(ID), Name, Email, stoi(Units), Program, level, temp, 0);
+			node->setTotalNumAbsences(stoi(numAbsences));
 			this->insertAtFront(node);
 		}
 	}
@@ -316,13 +326,24 @@ void List::save(string filename)
 	file << ", ID, Name, Email, Units, Program, Level";
 	while (cur != nullptr)
 	{
+		Stack *curS = cur->getAbsences();
+
 		file << endl << cur->getRecord() << ",";
 		file << cur->getID() << ",";
 		file << "\"" <<  cur->getName() << "\",";
 		file << cur->getEmail() << ",";
 		file << cur->getUnits() << ",";
 		file << cur->getMajor() << ",";
-		file << cur->getLevel();
+		file << cur->getLevel() << ",";
+		file << cur->getNumAbsences() << ",";
+
+		while (!curS->isEmpty())
+		{
+			Date temp = Date();
+			curS->pop(temp);
+			file << temp.returnFormattedData() << ",";
+			
+		}
 
 		cur = cur->getNext();
 	}
