@@ -22,6 +22,16 @@ void BST::inOrderTraversal(Node * root)
 	inOrderTraversal(root->getRight());
 }
 
+TransactionNode & BST::findSmallest()
+{
+	return findSmallest(mpRoot);
+}
+
+TransactionNode & BST::findLargest()
+{
+	return findLargest(mpRoot);
+}
+
 BST::BST()
 {
 	mpRoot = nullptr;
@@ -47,7 +57,7 @@ Node * BST::getHead()
 	return mpRoot;
 }
 
-void BST::insert(Node * root, Node * newNode)
+void BST::insert(Node *& root, Node * newNode)
 {
 	if (root == nullptr)
 	{
@@ -71,22 +81,20 @@ void BST::inOrderTraversal()
 }
 
 //can't be empty;
-TransactionNode *& BST::findSmallest(Node *& root)
+TransactionNode & BST::findSmallest(Node *& root)
 {
 	if (root->getLeft() != nullptr)
 	{
 		return findSmallest(root->getLeft());
 	}
-	TransactionNode * node = dynamic_cast<TransactionNode *>(root);
-	return node;
+	return  dynamic_cast<TransactionNode &>((*root));
 }
 
-TransactionNode *& BST::findLargest(Node *& root)
+TransactionNode & BST::findLargest(Node *& root)
 {
 	if (root->getRight() != nullptr)
 	{
 		return findSmallest(root->getRight());
 	}
-	TransactionNode * node = dynamic_cast<TransactionNode *>(root);
-	return node;
+	return dynamic_cast<TransactionNode &>((*root));
 }

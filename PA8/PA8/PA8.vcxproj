@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="BST.cpp" />
     <ClCompile Include="DataAnalysis.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="node.cpp" />
   </ItemGroup>
   <ItemGroup>

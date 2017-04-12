@@ -35,6 +35,7 @@ protected:
 public:
 	TransactionNode();
 	TransactionNode(int newUnits, std::string newData);
+	TransactionNode(TransactionNode *& newNode);
 	~TransactionNode();
 
 	void setUnits(int newUnits);
